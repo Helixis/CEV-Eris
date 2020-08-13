@@ -43,7 +43,7 @@
 	name = "Moebius \"Penetrator\" magnetic accelerator barrel"
 	desc = "Uses sympathetic magnetic coiling to increase exit velocity of a metal projectile."
 	icon_state = "Penetrator"
-	price_tag = 300
+	matter = list(MATERIAL_PLASTEEL = 10)
 
 /obj/item/weapon/gun_upgrade/barrel/mag_accel/New()
 	..()
@@ -61,6 +61,7 @@
 	name = "Moebius \"Caster\" magnetic overheat barrel"
 	desc = "Uses magnetic induction to heat the projectile of a weapon. Arguable combat effectiveness, but flashy nonetheless."
 	icon_state = "Caster"
+	matter = list(MATERIAL_PLASTEEL = 10)
 
 /obj/item/weapon/gun_upgrade/barrel/overheat/New()
 	..()
