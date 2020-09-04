@@ -39,3 +39,5 @@
 	power_equip = 0
 	power_environ = 0
 	always_unpowered = FALSE
+	flags = null
+	ambience = list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg','sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg', 'sound/ambience/ambisin2.ogg','sound/ambience/ambispace.ogg')
