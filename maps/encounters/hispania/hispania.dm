@@ -1,14 +1,14 @@
 #include "hispania.dmm"
 
 /obj/map_data/hispania
-	name = "Nss Hispania"
+	name = "Hispania Station"
 	is_player_level = TRUE
 	is_contact_level = TRUE
 	is_accessable_level = TRUE
 	height = 1
 
 /obj/effect/overmap/sector/hispania
-	name = "Nss Hispania"
+	name = "Hispania Station"
 	desc = "An assorted clutter of small asteroids and space trash, seems to be long abandoned."
 	icon_state = "sector"
 	generic_waypoints = list(
@@ -18,20 +18,20 @@
 	known = 1
 
 /obj/effect/shuttle_landmark/hispania/nav1
-	name = "Abandoned Nss Hispania Ruins #1"
+	name = "Abandoned Hispania Station Ruins #1"
 	icon_state = "shuttle-green"
 	landmark_tag = "nav_hispania_1"
 	base_turf = /turf/space
 
 /obj/effect/shuttle_landmark/hispania/nav2
-	name = "Abandoned Nss Hispania Ruins #2"
+	name = "Abandoned Hispania Station Ruins #2"
 	icon_state = "shuttle-green"
 	landmark_tag = "nav_hispania_2"
 	base_turf = /turf/space
 
 
 /area/space/hispania
-	name = "Abandoned Nss Hispania Ruins"
+	name = "Abandoned Hispania Station Ruins"
 	icon_state = "yellow"
 	has_gravity = FALSE
 	requires_power = 1
