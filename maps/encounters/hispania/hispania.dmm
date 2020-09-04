@@ -50683,7 +50683,6 @@
 	},
 /area/space/hispania)
 "cIe" = (
-(
 /obj/structure/cable/yellow{
 	d1 = 0;
 	d2 = 8;
