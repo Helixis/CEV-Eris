@@ -38,3 +38,4 @@
 	power_light = 0
 	power_equip = 0
 	power_environ = 0
+	always_unpowered = FALSE
