@@ -25867,7 +25867,7 @@
 /obj/machinery/ai_status_display{
 	pixel_y = 32
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bxr" = (
 /obj/structure/extinguisher_cabinet{
@@ -25894,13 +25894,13 @@
 	pixel_x = 0;
 	pixel_y = 32
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bxt" = (
 /obj/machinery/light_switch{
 	pixel_y = 27
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bxw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -27421,7 +27421,7 @@
 	icon_state = "1-2";
 	tag = ""
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bBB" = (
 /obj/machinery/porta_turret{
@@ -27700,7 +27700,7 @@
 /obj/item/weapon/aiModule/corp,
 /obj/item/weapon/aiModule/paladin,
 /obj/item/weapon/aiModule/robocop,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bCI" = (
 /obj/machinery,
@@ -27708,7 +27708,7 @@
 /area/space/hispania)
 "bCJ" = (
 /obj/structure/cable,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bCK" = (
 /obj/machinery/computer/aiupload,
@@ -27717,7 +27717,7 @@
 	pixel_x = 0;
 	pixel_y = -21
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bCL" = (
 /obj/machinery/computer/borgupload,
@@ -27725,7 +27725,7 @@
 	pixel_x = 0;
 	pixel_y = -28
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bCM" = (
 /obj/machinery/light{
@@ -28097,7 +28097,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bDU" = (
 /obj/structure/disposaloutlet{
@@ -28110,7 +28110,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bDW" = (
 /obj/structure/table,
@@ -28137,7 +28137,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bEb" = (
 /obj/structure/table,
@@ -28153,7 +28153,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bEe" = (
 /obj/structure/disposalpipe/segment{
@@ -28380,7 +28380,7 @@
 /area/space/hispania)
 "bFb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bFc" = (
 /obj/machinery/conveyor/southwest{
@@ -28407,7 +28407,7 @@
 /area/space/hispania)
 "bFf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bFg" = (
 /obj/machinery/atmospherics/unary/vent_scrubber{
@@ -29411,7 +29411,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bHP" = (
 /obj/structure/disposalpipe/segment{
@@ -29758,7 +29758,7 @@
 /obj/item/weapon/aiModule/oneHuman,
 /obj/item/weapon/aiModule/purge,
 /obj/item/weapon/aiModule/antimov,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bIO" = (
 /obj/structure/bed/chair,
@@ -30916,7 +30916,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bLQ" = (
 /obj/structure/table/glass,
@@ -31362,7 +31362,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bMV" = (
 /obj/structure/cable{
@@ -31375,7 +31375,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bMW" = (
 /obj/structure/cable{
@@ -33054,7 +33054,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bQL" = (
 /obj/machinery/door/firedoor,
@@ -34912,7 +34912,7 @@
 	dir = 2;
 	pixel_y = 24
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bVD" = (
 /obj/structure/window/reinforced/tinted{
@@ -35660,7 +35660,7 @@
 	pixel_y = 1;
 	d2 = 2
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bXs" = (
 /obj/structure/disposalpipe/trunk{
@@ -36309,7 +36309,7 @@
 /area/space/hispania)
 "bYU" = (
 /obj/machinery/blackbox_recorder,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "bYV" = (
 /obj/structure/table,
@@ -37439,7 +37439,7 @@
 	icon_state = "alarm0";
 	pixel_y = -22
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "cbg" = (
 /obj/machinery/light_switch{
@@ -38207,7 +38207,7 @@
 	icon_state = "intact";
 	dir = 6
 	},
-/turf/simulated/floor/bluegrid{
+/turf/simulated/floor/bluegrid/airless{
 	name = "Server Base";
 	oxygen = 0;
 	temperature = 0
@@ -38241,7 +38241,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid{
+/turf/simulated/floor/bluegrid/airless{
 	name = "Server Base";
 	oxygen = 0;
 	temperature = 0
@@ -38795,7 +38795,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/simulated/floor/bluegrid{
+/turf/simulated/floor/bluegrid/airless{
 	name = "Server Base";
 	oxygen = 0;
 	temperature = 0
@@ -38858,7 +38858,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/turf/simulated/floor/bluegrid{
+/turf/simulated/floor/bluegrid/airless{
 	name = "Server Base";
 	oxygen = 0;
 	temperature = 0
@@ -39324,7 +39324,7 @@
 	icon_state = "intact";
 	dir = 5
 	},
-/turf/simulated/floor/bluegrid{
+/turf/simulated/floor/bluegrid/airless{
 	name = "Server Base";
 	oxygen = 0;
 	temperature = 0
@@ -39529,7 +39529,7 @@
 	dir = 5;
 	level = 1
 	},
-/turf/simulated/floor/bluegrid{
+/turf/simulated/floor/bluegrid/airless{
 	name = "Server Base";
 	oxygen = 0;
 	temperature = 0
@@ -39606,7 +39606,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid{
+/turf/simulated/floor/bluegrid/airless{
 	name = "Server Base";
 	oxygen = 0;
 	temperature = 0
@@ -40640,7 +40640,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid{
+/turf/simulated/floor/bluegrid/airless{
 	name = "Server Base";
 	oxygen = 0;
 	temperature = 0
@@ -40667,7 +40667,7 @@
 	dir = 1;
 	name = "standard air scrubber"
 	},
-/turf/simulated/floor/bluegrid{
+/turf/simulated/floor/bluegrid/airless{
 	name = "Server Base";
 	oxygen = 0;
 	temperature = 0
@@ -50541,7 +50541,7 @@
 	valve_open = 0;
 	volume = 1e+006
 	},
-/turf/simulated/floor/reinforced/n20,
+/turf/simulated/floor/reinforced/airless,
 /area/space/hispania)
 "cIg" = (
 /obj/structure/disposalpipe/segment{
@@ -57330,7 +57330,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/space/hispania)
 "cWZ" = (
-/turf/simulated/floor/reinforced/n20,
+/turf/simulated/floor/reinforced/airless,
 /area/space/hispania)
 "cXa" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -57371,7 +57371,7 @@
 	pressure_checks = 2;
 	pump_direction = 0
 	},
-/turf/simulated/floor/reinforced/n20,
+/turf/simulated/floor/reinforced/airless,
 /area/space/hispania)
 "cXf" = (
 /obj/machinery/light,
@@ -57785,7 +57785,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/n20,
+/turf/simulated/floor/reinforced/airless,
 /area/space/hispania)
 "cYa" = (
 /obj/machinery/atmospherics/binary/pump{
@@ -57818,7 +57818,7 @@
 	frequency = 1441;
 	id_tag = "n2o_sensor"
 	},
-/turf/simulated/floor/reinforced/n20,
+/turf/simulated/floor/reinforced/airless,
 /area/space/hispania)
 "cYg" = (
 /obj/machinery/atmospherics/binary/pump{
@@ -58263,7 +58263,7 @@
 	id = "n2o_in";
 	pixel_y = 1
 	},
-/turf/simulated/floor/reinforced/n20,
+/turf/simulated/floor/reinforced/airless,
 /area/space/hispania)
 "cZj" = (
 /obj/structure/extinguisher_cabinet{
@@ -61876,7 +61876,7 @@
 "diC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "diD" = (
 /obj/machinery/light/small{
@@ -61888,7 +61888,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 27
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "diE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -61897,20 +61897,20 @@
 	initialize_directions = 11;
 	level = 1
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "diF" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "diG" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -5;
 	pixel_y = 30
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "diH" = (
 /obj/structure/closet/firecloset,
@@ -61976,7 +61976,7 @@
 	initialize_directions = 11;
 	level = 1
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "diO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -61985,7 +61985,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "diQ" = (
 /obj/machinery/bluespace_beacon,
@@ -62300,7 +62300,7 @@
 	level = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "djE" = (
 /obj/structure/lattice,
@@ -62329,7 +62329,7 @@
 	icon_state = "0-8"
 	},
 /obj/structure/bed/chair,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "djH" = (
 /obj/structure/cable{
@@ -62343,7 +62343,7 @@
 	dir = 8;
 	name = "standard air scrubber"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "djI" = (
 /obj/effect/decal/warning_stripes,
@@ -62365,7 +62365,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "djM" = (
 /obj/item/weapon/material/shard,
@@ -62389,7 +62389,7 @@
 	pixel_y = -24;
 	req_access = list(200)
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "djS" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
@@ -62478,7 +62478,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 27
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dke" = (
 /obj/effect/decal/warning_stripes,
@@ -62515,7 +62515,7 @@
 	initialize_directions = 11;
 	level = 1
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dkg" = (
 /obj/machinery/light/small{
@@ -62532,7 +62532,7 @@
 	dir = 4;
 	name = "standard air scrubber"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dkh" = (
 /obj/machinery/air_sensor{
@@ -62714,7 +62714,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dkI" = (
 /obj/effect/decal/warning_stripes,
@@ -62722,7 +62722,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dkJ" = (
 /obj/effect/decal/warning_stripes,
@@ -62741,14 +62741,14 @@
 	pixel_x = -30;
 	pixel_y = 30
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dkK" = (
 /obj/effect/decal/warning_stripes,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dkL" = (
 /obj/structure/table/woodentable,
@@ -62775,7 +62775,7 @@
 	level = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dkN" = (
 /obj/structure/disposalpipe/segment,
@@ -62892,7 +62892,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dkY" = (
 /obj/structure/cable{
@@ -62918,7 +62918,7 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /mob/living/bot/secbot,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dkZ" = (
 /obj/machinery/atmospherics/binary/pump{
@@ -62949,7 +62949,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dlc" = (
 /obj/machinery/door/firedoor,
@@ -63001,7 +63001,7 @@
 	initialize_directions = 11;
 	level = 1
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dle" = (
 /obj/effect/decal/warning_stripes,
@@ -63054,7 +63054,7 @@
 	dir = 8;
 	name = "standard air scrubber"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dlp" = (
 /obj/structure/disposalpipe/segment,
@@ -63074,7 +63074,7 @@
 /mob/living/bot/floorbot{
 	on = 0
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dlt" = (
 /obj/structure/cable{
@@ -63092,7 +63092,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dlu" = (
 /obj/machinery/porta_turret{
@@ -63102,7 +63102,7 @@
 	pixel_x = 32;
 	pixel_y = 0
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dlv" = (
 /obj/machinery/light/small,
@@ -63192,7 +63192,7 @@
 	tag = ""
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dlM" = (
 /obj/structure/disposalpipe/segment,
@@ -63228,7 +63228,7 @@
 /mob/living/bot/cleanbot{
 	on = 0
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dlS" = (
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -63561,7 +63561,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dmK" = (
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -63622,7 +63622,7 @@
 	dir = 5;
 	level = 1
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dmQ" = (
 /obj/structure/cable{
@@ -63664,7 +63664,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dmT" = (
 /obj/structure/cable{
@@ -63770,7 +63770,7 @@
 	level = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dng" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
@@ -63790,7 +63790,7 @@
 	dir = 8;
 	name = "standard air scrubber"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dnj" = (
 /obj/structure/cable{
@@ -63805,7 +63805,7 @@
 	initialize_directions = 11;
 	level = 1
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dnk" = (
 /obj/machinery/atm{
@@ -63867,7 +63867,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dnr" = (
 /obj/structure/cable{
@@ -63878,7 +63878,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dns" = (
 /obj/structure/sign/securearea{
@@ -63911,7 +63911,7 @@
 	dir = 9;
 	pixel_y = 0
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dnu" = (
 /obj/structure/kitchenspike,
@@ -63932,7 +63932,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dnx" = (
 /obj/structure/sign/fire,
@@ -63949,14 +63949,14 @@
 	icon_state = "motion0"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dnA" = (
 /obj/machinery/ai_slipper{
 	icon_state = "motion0"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dnB" = (
 /obj/structure/cable{
@@ -63968,7 +63968,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dnC" = (
 /obj/structure/cable{
@@ -63995,7 +63995,7 @@
 	dir = 1;
 	name = "standard air scrubber"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dnG" = (
 /obj/structure/grille,
@@ -64410,7 +64410,7 @@
 	pixel_y = 3
 	},
 /obj/item/weapon/pen/multi,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "doB" = (
 /obj/structure/table/woodentable,
@@ -64495,7 +64495,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dpb" = (
 /obj/machinery/computer/teleporter,
@@ -64570,7 +64570,7 @@
 	name = "station intercom (General)";
 	pixel_y = -28
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dpx" = (
 /obj/structure/table,
@@ -64579,7 +64579,7 @@
 	pixel_x = 0;
 	pixel_y = -32
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dpC" = (
 /obj/machinery/firealarm{
@@ -64709,7 +64709,7 @@
 /obj/machinery/porta_turret{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dqx" = (
 /obj/machinery/porta_turret{
@@ -64724,7 +64724,7 @@
 	pixel_x = -32;
 	pixel_y = 0
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dqA" = (
 /obj/structure/table/rack,
@@ -64736,7 +64736,7 @@
 /obj/machinery/porta_turret{
 	dir = 8
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dqL" = (
 /obj/structure/lattice,
@@ -64752,7 +64752,7 @@
 	installation = /obj/item/weapon/gun/energy/gun;
 	name = "hallway turret"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dqO" = (
 /obj/machinery/light{
@@ -64764,7 +64764,7 @@
 	installation = /obj/item/weapon/gun/energy/gun;
 	name = "hallway turret"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dqQ" = (
 /obj/structure/lattice,
@@ -64775,7 +64775,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drf" = (
 /turf/simulated/wall/r_wall,
@@ -64786,7 +64786,7 @@
 /area/space/hispania)
 "drh" = (
 /obj/structure/cable,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dro" = (
 /obj/machinery/light/small{
@@ -64798,7 +64798,7 @@
 	pixel_y = 7
 	},
 /obj/item/weapon/pen/multi,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drq" = (
 /obj/machinery/alarm{
@@ -64807,15 +64807,15 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drt" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/folder,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dry" = (
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drA" = (
 /obj/structure/extinguisher_cabinet{
@@ -64823,7 +64823,7 @@
 	pixel_y = 0
 	},
 /obj/structure/bed/chair/office/dark,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drG" = (
 /obj/machinery/light{
@@ -64836,7 +64836,7 @@
 	pixel_x = -32;
 	pixel_y = 0
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -64844,7 +64844,7 @@
 	initialize_directions = 10;
 	level = 1
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drN" = (
 /turf/simulated/wall,
@@ -64860,7 +64860,7 @@
 	pixel_x = 32;
 	pixel_y = 0
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drP" = (
 /obj/structure/cable{
@@ -64874,7 +64874,7 @@
 	name = "AI Core Door";
 	req_access = list(200);
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drQ" = (
 /obj/structure/window/reinforced{
@@ -64895,7 +64895,7 @@
 	pixel_x = -8;
 	pixel_y = -24
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drR" = (
 /obj/structure/cable{
@@ -64908,7 +64908,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drS" = (
 /obj/item/device/radio/intercom/custom{
@@ -64923,7 +64923,7 @@
 /obj/landmark{
 	name = "tripai"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drT" = (
 /obj/item/device/radio/intercom/custom{
@@ -64953,7 +64953,7 @@
 /obj/landmark{
 	name = "AI"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drV" = (
 /obj/item/device/radio/intercom/custom{
@@ -64968,7 +64968,7 @@
 /obj/landmark{
 	name = "tripai"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "drX" = (
 /obj/structure/lattice,
@@ -64985,7 +64985,7 @@
 	icon_state = "1-4";
 	tag = "90Curve"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dsc" = (
 /obj/structure/cable{
@@ -64995,7 +64995,7 @@
 /obj/machinery/power/smes/buildable{
 	charge = 5e+006
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dsd" = (
 /obj/structure/cable{
@@ -65015,10 +65015,10 @@
 /obj/machinery/ai_slipper{
 	icon_state = "motion0"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dsg" = (
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dsh" = (
 /obj/machinery/alarm{
@@ -65026,14 +65026,14 @@
 	pixel_y = -22
 	},
 /obj/machinery/hologram/holopad,
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dsi" = (
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/bluegrid/airless,
 /area/space/hispania)
 "dsj" = (
 /turf/space,
