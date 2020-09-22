@@ -2,8 +2,6 @@
 	name = "Fate"
 	category_item_type = /datum/category_item/setup_option/background/fate
 
-/datum/category_item/setup_option/background/fate
-
 /datum/category_item/setup_option/background/fate/cazador
 	name = "Cazador"
 	desc = "Cuantas vidas haz acabado? En cuantas batallas te metiste? Eso no te importa, tu eres un ¡CAZADOR!. La pregunta seria: ¿QUIEN SERA LA PROXIMA PRESA? \
