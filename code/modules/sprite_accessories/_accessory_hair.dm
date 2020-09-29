@@ -12,7 +12,7 @@
 /datum/sprite_accessory/hair/bald
 	name = "Bald"
 	icon_state = "bald"
-	species_allowed = list(SPECIES_HUMAN,SPECIES_KIDAN)
+	species_allowed = list(SPECIES_HUMAN,SPECIES_KIDAN, SPECIES_SLIMEPEOPLE)
 
 /datum/sprite_accessory/hair/afro
 	name = "Afro"

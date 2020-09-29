@@ -1249,6 +1249,7 @@
 #include "code\hispania\modules\sprite_accessories\human\human_hair.dm"
 #include "code\hispania\modules\sprite_accessories\kidan\kidan_facial.dm"
 #include "code\hispania\modules\sprite_accessories\kidan\kidan_hair.dm"
+#include "code\hispania\modules\sprite_accessories\slime\slime_hair.dm"
 #include "code\js\byjax.dm"
 #include "code\js\menus.dm"
 #include "code\modules\acting\acting_items.dm"
