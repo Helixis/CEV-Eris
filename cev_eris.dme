@@ -1234,6 +1234,7 @@
 #include "code\game\verbs\ooc.dm"
 #include "code\game\verbs\who.dm"
 #include "code\hispania\__HELPERS\mobs.dm"
+#include "code\hispania\game\objects\items\weapons\defibrillator.dm"
 #include "code\hispania\game\objects\items\weapons\kitchen.dm"
 #include "code\hispania\game\objects\items\weapons\manuals.dm"
 #include "code\hispania\modules\clothing\clothing.dm"
