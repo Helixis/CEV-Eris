@@ -41,6 +41,7 @@
 #define LANGUAGE_OCCULT "Occult"
 #define LANGUAGE_BLITZ "Blitzshell Communique"
 #define LANGUAGE_KIDAN "Chittin" //hispania
+#define LANGUAGE_SLIMEPEOPLE "Bubblish" //hispania
 
 // Language flags.
 #define WHITELISTED  1   // Language is available if the speaker is whitelisted.

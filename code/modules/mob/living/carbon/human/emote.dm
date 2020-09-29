@@ -57,7 +57,7 @@
 				return
 			var/M = handle_emote_param(param)
 
-			message = "<B>[src]</B> clacks [p_their()] mandibles[M ? " at [M]" : ""]."
+			message = "clacks [p_their()] mandibles[M ? " at [M]" : ""]."
 			playsound(loc, 'sound/hispania/effects/Kidanclack.ogg', 50, 1, frequency = get_age_pitch()) //Credit to DrMinky (freesound.org) for the sound.
 			m_type = 2
 
@@ -66,8 +66,16 @@
 				return
 			var/M = handle_emote_param(param)
 
-			message = "<B>[src]</B> clicks [p_their()] mandibles[M ? " at [M]" : ""]."
+			message = "clicks [p_their()] mandibles[M ? " at [M]" : ""]."
 			playsound(loc, 'sound/hispania/effects/Kidanclack2.ogg', 50, 1, frequency = get_age_pitch()) //Credit to DrMinky (freesound.org) for the sound.
+			m_type = 2
+
+		if("squish" || "squishes")
+			if(!isslimepeople(src))
+				return
+
+			message = "squishes!"
+			playsound(loc, 'sound/hispania/effects/slime_squish.ogg', 50, 1) //Credit to DrMinky (freesound.org) for the sound.
 			m_type = 2
 
 		if ("custom")
