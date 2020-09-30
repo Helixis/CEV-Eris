@@ -45,9 +45,9 @@
 
 	if(cell)
 		var/ratio = CEILING(cell.percent()/25,1) * 25
-		new_overlays += "[(icon_state)]-charge[ratio]"
+		new_overlays += "[initial(icon_state)]-charge[ratio]"
 	else
-		new_overlays += "[(icon_state)]-nocell"
+		new_overlays += "[initial(icon_state)]-nocell"
 
 	overlays = new_overlays
 
