@@ -242,7 +242,7 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	H.AdjustSleeping(-60)
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
 
-/obj/item/weapon/defibrillator/proc/lowskill_revive(mob/living/carbon/human/H, mob/living/user)
+/obj/item/weapon/defibrillator/proc/lowskill_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(prob(60))
 		playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
 		H.electrocute_act(burn_damage_amt*4, src, def_zone = BP_CHEST)
@@ -252,6 +252,7 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
 		user.electrocute_act(burn_damage_amt*2, src, def_zone = BP_L_ARM)
 		user.electrocute_act(burn_damage_amt*2, src, def_zone = BP_R_ARM)
+
 		user.visible_message("<span class='warning'><i>\The [user] shocks themselves with \the [src]!</i></span>", "<span class='warning'>You forget to move your hands away and shock yourself with \the [src]!</span>")
 		return 0
 	return 1
