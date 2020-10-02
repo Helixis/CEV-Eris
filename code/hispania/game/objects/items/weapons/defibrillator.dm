@@ -362,5 +362,6 @@ obj/item/weapon/defibrillator/proc/apply_brain_damage(mob/living/carbon/human/H,
 		update_icon()
 	..()
 
+
 #undef DEFIB_TIME_LIMIT
 #undef DEFIB_TIME_LOSS
