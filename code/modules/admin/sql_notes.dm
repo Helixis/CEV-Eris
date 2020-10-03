@@ -1,3 +1,6 @@
+datum/admins/proc/show_note(var/ckey)
+	usr << browse("<head><title>Player Notes</title></head><body>[show_note(ckey)]</body>","window=player_notes;size=700x400")
+
 /proc/add_note(target_ckey, notetext, timestamp, adminckey, logged = 1, server, checkrights = 1)
 	if(checkrights && !check_rights(R_ADMIN|R_MOD))
 		return
