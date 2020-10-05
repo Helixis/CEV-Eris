@@ -136,7 +136,7 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 
 /obj/item/weapon/defibrillator/proc/can_revive(mob/living/carbon/human/H) //This is checked right before attempting to revive
 	if(H.stat == DEAD)
-		return "buzzes, \"Resuscitation failed - Severe neurological decay makes recovery of patient impossible. Further attempts futile.\""
+		return TRUE
 
 /obj/item/weapon/defibrillator/proc/check_contact(mob/living/carbon/human/H)
 	if(!combat)
@@ -274,8 +274,8 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	playsound(get_turf(src), 'sound/machines/defib_charge.ogg', 50, 0)
 	audible_message("<span class='warning'>The [src] lets out a steadily rising hum...</span>")
 
-	if(!do_after(user, chargetime, H))
-		return
+/*	if(!do_after(user, chargetime, H))
+		return */
 
 	//deduct charge here, in case the base unit was EMPed or something during the delay time
 	if(!checked_use(chargecost))
