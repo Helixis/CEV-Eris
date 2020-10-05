@@ -61,13 +61,13 @@
 /obj/item/weapon/defibrillator/attackby(obj/item/weapon/W, mob/user, params)
 	if(istype(W, /obj/item/weapon/cell))
 		if(cell)
-			to_chat(user, "<span class='notice'>\the [src] already has a cell.</span>")
+			to_chat(user, "<span class='notice'>The [src] already has a cell.</span>")
 		else
 			if(!user.unEquip(W))
 				return
 			W.forceMove(src)
 			cell = W
-			to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
+			to_chat(user, "<span class='notice'>You install a cell in the [src].</span>")
 			update_icon()
 	else if(QUALITY_SCREW_DRIVING in W.tool_qualities)
 		if(cell)
@@ -75,22 +75,22 @@
 			cell.loc = get_turf(user)
 			cell = null
 			active = FALSE
-			to_chat(user, "<span class='notice'>You remove the cell from \the [src].</span>")
+			to_chat(user, "<span class='notice'>You remove the cell from the [src].</span>")
 			update_icon()
 	else
 		return ..()
 
 /obj/item/weapon/defibrillator/attack_self(var/mob/living/user)
 	if(!cell)
-		to_chat(user, "<span class='notice'>You cannot turn on \the [src] without a cell!.</span>")
+		to_chat(user, "<span class='notice'>You cannot turn on the [src] without a cell!.</span>")
 		update_icon()
 	else
 		if(!active)
-			to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
+			to_chat(user, "<span class='notice'>You turn the [src] on .</span>")
 			active = TRUE
 			update_icon()
 		else
-			to_chat(user, "<span class='notice'>You turn off \the [src]")
+			to_chat(user, "<span class='notice'>You turn the [src] off .</span>")
 			active = FALSE
 			update_icon()
 			return
@@ -111,21 +111,21 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	if(busy)
 		return 0
 	if(!check_charge(chargecost))
-		to_chat(user, "<span class='warning'>\The [src] doesn't have enough charge left to do that.</span>")
+		to_chat(user, "<span class='warning'>The [src] doesn't have enough charge left to do that.</span>")
 		return 0
 	if(cooldown)
-		to_chat(user, "<span class='warning'>\The [src] are re-energizing!</span>")
+		to_chat(user, "<span class='warning'>The [src] is recharging!</span>")
 		return 0
 	if(!active)
-		to_chat(user, "<span class='warning'>\The [src] is off, to use it turn it on.</span>")
+		to_chat(user, "<span class='warning'>The [src] is off, you need to turn it on in order to use it.</span>")
 		return 0
 	return 1
 
 /obj/item/weapon/defibrillator/proc/active_heart(mob/user, mob/living/carbon/human/H)
 	if(H.stat != DEAD)
-		to_chat(user, "<span class='warning'>\The [H]'s Hearth is active!.</span>")
-		return 0
-	return 1
+		to_chat(user, "<span class='warning'>The [H]'s Hearth is active!.</span>")	
+		return TRUE
+	return FALSE
 
 //Checks for various conditions to see if the mob is revivable	
 /obj/item/weapon/defibrillator/proc/can_defib(mob/living/carbon/human/H) //This is checked before doing the defib operation
@@ -154,7 +154,7 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	return FALSE
 
 /obj/item/weapon/defibrillator/proc/check_charge(var/charge_amt)
-	return (cell && cell.checked_use(charge_amt))
+	return (cell && cell.check_charge(charge_amt))
 
 /obj/item/weapon/defibrillator/proc/checked_use(var/charge_amt)
 	return (cell && cell.checked_use(charge_amt))
@@ -196,10 +196,10 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		to_chat(find_dead_player(H.ckey, 1), "<span class='notice'>Someone is attempting to resuscitate you. Re-enter your body if you want to be revived!</span>")
 
 	//beginning to place the paddles on patient's chest to allow some time for people to move away to stop the process
-	user.visible_message("<span class='warning'>\The [user] begins to place [src] on [H]'s chest.</span>", "<span class='warning'>You begin to place [src] on [H]'s chest...</span>")
+	user.visible_message("<span class='warning'>The [user] begins to place [src] on [H]'s chest.</span>", "<span class='warning'>You begin to place [src] on [H]'s chest...</span>")
 	if(!do_after(user, 3 SECONDS * user.stats.getMult(STAT_BIO, STAT_LEVEL_GODLIKE), H))
 		return
-	user.visible_message("<span class='notice'>\The [user] places [src] on [H]'s chest.</span>", "<span class='warning'>You place [src] on [H]'s chest.</span>")
+	user.visible_message("<span class='notice'>The [user] places [src] on [H]'s chest.</span>", "<span class='warning'>You place [src] on [H]'s chest.</span>")
 	playsound(get_turf(src), 'sound/machines/defib_charge.ogg', 50, 0)
 
 	var/error = can_defib(H)
@@ -246,14 +246,14 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	if(prob(60))
 		playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
 		H.electrocute_act(burn_damage_amt*4, src, def_zone = BP_CHEST)
-		user.visible_message("<span class='warning'><i>The paddles were misaligned! \The [user] shocks [H] with \the [src]!</i></span>", "<span class='warning'>The paddles were misaligned! You shock [H] with \the [src]!</span>")
+		user.visible_message("<span class='warning'><i>The paddles were misaligned! The [user] shocks [H] with the [src]!</i></span>", "<span class='warning'>The paddles were misaligned! You shock [H] with the [src]!</span>")
 		return 0
 	if(prob(50))
 		playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
 		user.electrocute_act(burn_damage_amt*2, src, def_zone = BP_L_ARM)
 		user.electrocute_act(burn_damage_amt*2, src, def_zone = BP_R_ARM)
 
-		user.visible_message("<span class='warning'><i>\The [user] shocks themselves with \the [src]!</i></span>", "<span class='warning'>You forget to move your hands away and shock yourself with \the [src]!</span>")
+		user.visible_message("<span class='warning'><i>The [user] shocks themselves with the [src]!</i></span>", "<span class='warning'>You forget to move your hands away and shock yourself with the [src]!</span>")
 		return 0
 	return 1
 
@@ -264,7 +264,7 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		return
 
 	//no need to spend time carefully placing the paddles, we're just trying to shock them
-	user.visible_message("<span class='danger'>\The [user] slaps [src] onto [H]'s [affecting.name].</span>", "<span class='danger'>You overcharge [src] and slap them onto [H]'s [affecting.name].</span>")
+	user.visible_message("<span class='danger'>The [user] slaps [src] onto [H]'s [affecting.name].</span>", "<span class='danger'>You overcharge [src] and slap them onto [H]'s [affecting.name].</span>")
 
 	//Just stop at awkwardly slapping electrodes on people if the safety is enabled
 	if(safety)
@@ -272,7 +272,7 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		return
 
 	playsound(get_turf(src), 'sound/machines/defib_charge.ogg', 50, 0)
-	audible_message("<span class='warning'>\The [src] lets out a steadily rising hum...</span>")
+	audible_message("<span class='warning'>The [src] lets out a steadily rising hum...</span>")
 
 	if(!do_after(user, chargetime, H))
 		return
@@ -283,7 +283,7 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
 		return
 
-	user.visible_message("<span class='danger'><i>\The [user] shocks [H] with \the [src]!</i></span>", "<span class='warning'>You shock [H] with \the [src]!</span>")
+	user.visible_message("<span class='danger'><i>The [user] shocks [H] with \the [src]!</i></span>", "<span class='warning'>You shock [H] with \the [src]!</span>")
 	playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
 	playsound(loc, 'sound/weapons/Egloves.ogg', 100, 1, -1)
 	set_cooldown(cooldowntime)
@@ -320,7 +320,7 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	apply_brain_damage(M, deadtime)
 
 /obj/item/weapon/defibrillator/proc/make_announcement(var/message, var/msg_class)
-	audible_message("<b>\The [src]</b> [message]", "\The [src] vibrates slightly.")
+	audible_message("<b>The [src]</b> [message]", "The [src] vibrates slightly.")
 
 obj/item/weapon/defibrillator/proc/apply_brain_damage(mob/living/carbon/human/H, var/deadtime)
 	if(deadtime < DEFIB_TIME_LOSS) return
@@ -338,13 +338,13 @@ obj/item/weapon/defibrillator/proc/apply_brain_damage(mob/living/carbon/human/H,
 		return
 	if(safety)
 		safety = 0
-		to_chat(user, "<span class='warning'>You silently disable \the [src]'s safety protocols with the cryptographic sequencer.</span>")
+		to_chat(user, "<span class='warning'>You silently disable the [src]'s safety protocols with the cryptographic sequencer.</span>")
 		burn_damage_amt *= 3
 		base.update_icon()
 		return 1
 	else
 		safety = 1
-		to_chat(user, "<span class='notice'>You silently enable \the [src]'s safety protocols with the cryptographic sequencer.</span>")
+		to_chat(user, "<span class='notice'>You silently enable the [src]'s safety protocols with the cryptographic sequencer.</span>")
 		burn_damage_amt = initial(burn_damage_amt)
 		base.update_icon()
 		return 1
