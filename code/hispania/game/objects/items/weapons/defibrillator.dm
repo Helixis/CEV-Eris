@@ -134,9 +134,12 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	if(!check_contact(H))
 		return "buzzes, \"Patient's chest is obstructed. Operation aborted.\""
 
-/obj/item/weapon/defibrillator/proc/can_revive(mob/living/carbon/human/H) //This is checked right before attempting to revive
-	if(H.stat == DEAD)
-		return TRUE
+/obj/item/weapon/defibrillator/proc/can_revive(mob/user, mob/living/carbon/human/H) //This is checked right before attempting to revive
+	var/damage = H.bruteloss + H.fireloss
+	if(damage >= 500)
+		to_chat(user, "<span class='warning'>The [H]'s vital signs are weak! fix the damage an retry again.</span>")	
+		return FALSE
+	return TRUE
 
 /obj/item/weapon/defibrillator/proc/check_contact(mob/living/carbon/human/H)
 	if(!combat)
@@ -231,15 +234,15 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		make_announcement(error, "warning")
 		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
 		return
-	if(!user.stat_check(STAT_BIO, STAT_LEVEL_BASIC ) && !lowskill_revive(H, user))
+	if(!user.stat_check(STAT_BIO, STAT_LEVEL_BASIC))
 		return	
-	H.apply_damage(burn_damage_amt, BURN, BP_CHEST)
+
 
 //set oxyloss so that the patient is just barely in crit, if possible
 	make_announcement("pings, \"Resuscitation successful.\"", "notice")
 	playsound(get_turf(src), 'sound/machines/defib_success.ogg', 50, 0)
-	H.resuscitate()
 	H.AdjustSleeping(-60)
+	make_alive(H)
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
 
 /obj/item/weapon/defibrillator/proc/lowskill_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
@@ -271,8 +274,8 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		to_chat(user, "<span class='warning'>You can't do that while the safety is enabled.</span>")
 		return
 
-	playsound(get_turf(src), 'sound/machines/defib_charge.ogg', 50, 0)
-	audible_message("<span class='warning'>The [src] lets out a steadily rising hum...</span>")
+/*	playsound(get_turf(src), 'sound/machines/defib_charge.ogg', 50, 0)
+	audible_message("<span class='warning'>The [src] lets out a steadily rising hum...</span>")*/
 
 /*	if(!do_after(user, chargetime, H))
 		return */
