@@ -134,13 +134,6 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	if(!check_contact(H))
 		return "buzzes, \"Patient's chest is obstructed. Operation aborted.\""
 
-/obj/item/weapon/defibrillator/proc/can_revive(mob/user, mob/living/carbon/human/H) //This is checked right before attempting to revive
-	var/damage = H.bruteloss + H.fireloss
-	if(damage >= 500)
-		to_chat(user, "<span class='warning'>The [H]'s vital signs are weak! fix the damage an retry again.</span>")	
-		return FALSE
-	return TRUE
-
 /obj/item/weapon/defibrillator/proc/check_contact(mob/living/carbon/human/H)
 	if(!combat)
 		for(var/obj/item/clothing/cloth in list(H.wear_suit, H.w_uniform))
@@ -194,7 +187,7 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 
 	return ..()
 
-/obj/item/weapon/defibrillator/proc/do_revive(mob/living/carbon/human/H, mob/living/user)
+/obj/item/weapon/defibrillator/proc/do_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(H.species.show_ssd)
 		to_chat(find_dead_player(H.ckey, 1), "<span class='notice'>Someone is attempting to resuscitate you. Re-enter your body if you want to be revived!</span>")
 
@@ -212,8 +205,9 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		return
 
 	if(check_blood_level(H))
-		make_announcement("buzzes, \"Warning - Patient is in hypovolemic shock and may require a blood transfusion.\"", "warning") //also includes heart damage
-
+		make_announcement("buzzes, \"Warning - Patient is in hypovolemic shock and may require a blood transfusion.\"", "warning")	 //also includes heart damage
+		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
+		return
 	//placed on chest and short delay to shock for dramatic effect, revive time is 5sec total
 	if(!do_after(user, chargetime, H))
 		return
@@ -229,14 +223,18 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 50, 1, -1)
 	set_cooldown(cooldowntime)
 
-	error = can_revive(H)
-	if(error)
-		make_announcement(error, "warning")
-		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
-		return
 	if(!user.stat_check(STAT_BIO, STAT_LEVEL_BASIC))
-		return	
-
+		if(prob(30))	
+			playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
+			H.electrocute_act(burn_damage_amt*4, src, def_zone = BP_CHEST)
+			user.visible_message("<span class='warning'><i>The paddles were misaligned! The [user] shocks [H] with the [src]!</i></span>", "<span class='warning'>The paddles were misaligned! You shock [H] with the [src]!</span>")
+			return
+		if(prob(40))
+			playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
+			user.electrocute_act(burn_damage_amt*2, user, def_zone = BP_L_ARM)
+			user.electrocute_act(burn_damage_amt*2, user, def_zone = BP_R_ARM)
+			user.visible_message("<span class='warning'><i>The [user] shocks themselves with the [src]!</i></span>", "<span class='warning'>You forget to move your hands away and shock yourself with the [src]!</span>")
+			return
 
 //set oxyloss so that the patient is just barely in crit, if possible
 	make_announcement("pings, \"Resuscitation successful.\"", "notice")
@@ -244,21 +242,6 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	H.AdjustSleeping(-60)
 	make_alive(H)
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
-
-/obj/item/weapon/defibrillator/proc/lowskill_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
-	if(prob(60))
-		playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
-		H.electrocute_act(burn_damage_amt*4, src, def_zone = BP_CHEST)
-		user.visible_message("<span class='warning'><i>The paddles were misaligned! The [user] shocks [H] with the [src]!</i></span>", "<span class='warning'>The paddles were misaligned! You shock [H] with the [src]!</span>")
-		return 0
-	if(prob(50))
-		playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
-		user.electrocute_act(burn_damage_amt*2, src, def_zone = BP_L_ARM)
-		user.electrocute_act(burn_damage_amt*2, src, def_zone = BP_R_ARM)
-
-		user.visible_message("<span class='warning'><i>The [user] shocks themselves with the [src]!</i></span>", "<span class='warning'>You forget to move your hands away and shock yourself with the [src]!</span>")
-		return 0
-	return 1
 
 /obj/item/weapon/defibrillator/proc/do_electrocute(mob/living/carbon/human/H, mob/user, var/target_zone)
 	var/obj/item/organ/external/affecting = H.get_organ(target_zone)
@@ -273,12 +256,6 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	if(safety)
 		to_chat(user, "<span class='warning'>You can't do that while the safety is enabled.</span>")
 		return
-
-/*	playsound(get_turf(src), 'sound/machines/defib_charge.ogg', 50, 0)
-	audible_message("<span class='warning'>The [src] lets out a steadily rising hum...</span>")*/
-
-/*	if(!do_after(user, chargetime, H))
-		return */
 
 	//deduct charge here, in case the base unit was EMPed or something during the delay time
 	if(!checked_use(chargecost))
