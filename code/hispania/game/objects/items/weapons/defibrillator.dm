@@ -13,12 +13,12 @@
 	w_class = ITEM_SIZE_BULKY
 
 	var/obj/item/weapon/cell/cell
-	var/suitable_cell = /obj/item/weapon/cell/medium/super	
+	var/suitable_cell = /obj/item/weapon/cell/medium
 	var/chargecost = 50
 	var/chargetime = (2 SECONDS)	
-	var/cooldown = 0
+	var/cooldown = FALSE
 	var/cooldowntime = (5 SECONDS)
-	var/busy = 0
+	var/busy = FALSE
 	var/active = FALSE
 	var/combat = FALSE
 	var/safety = TRUE
@@ -27,7 +27,7 @@
 /obj/item/weapon/defibrillator/Initialize()
 	. = ..()
 	if(!cell && suitable_cell)
-		cell = new suitable_cell(src)
+		cell = new /obj/item/weapon/cell/medium/super(src)
 		update_icon()
 
 /obj/item/weapon/defibrillator/Destroy()
@@ -96,12 +96,12 @@
 			return
 		
 obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
-	cooldown = 1
+	cooldown = TRUE
 	update_icon()
 
 	spawn(delay)
 		if(cooldown)
-			cooldown = 0
+			cooldown = FALSE
 			update_icon()
 
 			make_announcement("beeps, \"Unit is re-energized.\"", "notice")
@@ -109,17 +109,17 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 
 /obj/item/weapon/defibrillator/proc/can_use(mob/user, mob/living/carbon/human/H)
 	if(busy)
-		return 0
+		return FALSE
 	if(!check_charge(chargecost))
 		to_chat(user, "<span class='warning'>The [src] doesn't have enough charge left to do that.</span>")
-		return 0
+		return FALSE
 	if(cooldown)
 		to_chat(user, "<span class='warning'>The [src] is recharging!</span>")
-		return 0
+		return FALSE
 	if(!active)
 		to_chat(user, "<span class='warning'>The [src] is off, you need to turn it on in order to use it.</span>")
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/item/weapon/defibrillator/proc/active_heart(mob/user, mob/living/carbon/human/H)
 	if(H.stat != DEAD)
@@ -163,27 +163,27 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		return ..() //Do a regular attack. Harm intent shocking happens as a hit effect
 
 	if(can_use(user, H) && !active_heart(user, H))
-		busy = 1
+		busy = TRUE
 		update_icon()
 
 		do_revive(H, user)
 
-		busy = 0
+		busy = FALSE
 		update_icon()
 
-	return 1
+	return TRUE
 
 /obj/item/weapon/defibrillator/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
 	if(ishuman(target) && can_use(user, target))
-		busy = 1
+		busy = TRUE
 		update_icon()
 
 		do_electrocute(target, user, hit_zone)
 
-		busy = 0
+		busy = FALSE
 		update_icon()
 
-		return 1
+		return TRUE	
 
 	return ..()
 
@@ -317,17 +317,17 @@ obj/item/weapon/defibrillator/proc/apply_brain_damage(mob/living/carbon/human/H,
 	if(!base)
 		return
 	if(safety)
-		safety = 0
+		safety = FALSE
 		to_chat(user, "<span class='warning'>You silently disable the [src]'s safety protocols with the cryptographic sequencer.</span>")
 		burn_damage_amt *= 3
 		base.update_icon()
-		return 1
+		return TRUE
 	else
-		safety = 1
+		safety = TRUE
 		to_chat(user, "<span class='notice'>You silently enable the [src]'s safety protocols with the cryptographic sequencer.</span>")
 		burn_damage_amt = initial(burn_damage_amt)
 		base.update_icon()
-		return 1
+		return FALSE
 
 /obj/item/weapon/defibrillator/emp_act(severity)
 	var/new_safety = rand(0, 1)
