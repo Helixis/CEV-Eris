@@ -45,9 +45,9 @@
 
 	if(cell)
 		var/ratio = CEILING(cell.percent()/25,1) * 25
-		new_overlays += "[initial(icon_state)]-charge[ratio]"
+		new_overlays += "[(icon_state)]-charge[ratio]"
 	else
-		new_overlays += "[initial(icon_state)]-nocell"
+		new_overlays += "[(icon_state)]-nocell"
 
 	overlays = new_overlays
 
@@ -61,13 +61,13 @@
 /obj/item/weapon/defibrillator/attackby(obj/item/weapon/W, mob/user, params)
 	if(istype(W, /obj/item/weapon/cell))
 		if(cell)
-			to_chat(user, "<span class='notice'>The [src] already has a cell.</span>")
+			to_chat(user,  SPAN_NOTICE("The [src] already has a cell."))
 		else
 			if(!user.unEquip(W))
 				return
 			W.forceMove(src)
 			cell = W
-			to_chat(user, "<span class='notice'>You install a cell in the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You install a cell in the [src]."))
 			update_icon()
 	else if(QUALITY_SCREW_DRIVING in W.tool_qualities)
 		if(cell)
@@ -75,27 +75,27 @@
 			cell.loc = get_turf(user)
 			cell = null
 			active = FALSE
-			to_chat(user, "<span class='notice'>You remove the cell from the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))
 			update_icon()
 	else
 		return ..()
 
-/obj/item/weapon/defibrillator/attack_self(var/mob/living/user)
+/obj/item/weapon/defibrillator/attack_self(mob/living/user)
 	if(!cell)
-		to_chat(user, "<span class='notice'>You cannot turn on the [src] without a cell!.</span>")
+		to_chat(user, SPAN_NOTICE("You cannot turn on the [src] without a cell!."))
 		update_icon()
 	else
 		if(!active)
-			to_chat(user, "<span class='notice'>You turn the [src] on .</span>")
+			to_chat(user,	SPAN_NOTICE("You turn the [src] on ."))
 			active = TRUE
 			update_icon()
 		else
-			to_chat(user, "<span class='notice'>You turn the [src] off .</span>")
+			to_chat(user, SPAN_NOTICE("You turn the [src] off ."))
 			active = FALSE
 			update_icon()
 			return
 		
-obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
+/obj/item/weapon/defibrillator/proc/set_cooldown(delay)
 	cooldown = TRUE
 	update_icon()
 
@@ -111,19 +111,19 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	if(busy)
 		return FALSE
 	if(!check_charge(chargecost))
-		to_chat(user, "<span class='warning'>The [src] doesn't have enough charge left to do that.</span>")
+		to_chat(user,  SPAN_WARNING("The [src] doesn't have enough charge left to do that."))
 		return FALSE
 	if(cooldown)
-		to_chat(user, "<span class='warning'>The [src] is recharging!</span>")
+		to_chat(user,  SPAN_WARNING("The [src] is recharging!."))
 		return FALSE
 	if(!active)
-		to_chat(user, "<span class='warning'>The [src] is off, you need to turn it on in order to use it.</span>")
+		to_chat(user, SPAN_WARNING("The [src] is off, you need to turn it on in order to use it."))
 		return FALSE
 	return TRUE
 
 /obj/item/weapon/defibrillator/proc/active_heart(mob/user, mob/living/carbon/human/H)
 	if(H.stat != DEAD)
-		to_chat(user, "<span class='warning'>The [H]'s Hearth is active!.</span>")	
+		to_chat(user, SPAN_WARNING("The [H]'s Hearth is active!."))	
 		return TRUE
 	return FALSE
 
@@ -149,13 +149,13 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		return TRUE
 	return FALSE
 
-/obj/item/weapon/defibrillator/proc/check_charge(var/charge_amt)
+/obj/item/weapon/defibrillator/proc/check_charge(charge_amt)
 	return (cell && cell.check_charge(charge_amt))
 
-/obj/item/weapon/defibrillator/proc/checked_use(var/charge_amt)
+/obj/item/weapon/defibrillator/proc/checked_use(charge_amt)
 	return (cell && cell.checked_use(charge_amt))
 	
-/obj/item/weapon/defibrillator/attack(mob/living/M, mob/living/user, var/target_zone)
+/obj/item/weapon/defibrillator/attack(mob/living/M, mob/living/user, target_zone)
 	if(!ishuman(M))
 		return ..()
 	var/mob/living/carbon/human/H = M
@@ -173,7 +173,7 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 
 	return TRUE
 
-/obj/item/weapon/defibrillator/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/weapon/defibrillator/apply_hit_effect(mob/living/target, mob/living/user, hit_zone)
 	if(ishuman(target) && can_use(user, target))
 		busy = TRUE
 		update_icon()
@@ -189,13 +189,13 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 
 /obj/item/weapon/defibrillator/proc/do_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(H.species.show_ssd)
-		to_chat(find_dead_player(H.ckey, 1), "<span class='notice'>Someone is attempting to resuscitate you. Re-enter your body if you want to be revived!</span>")
+		to_chat(find_dead_player(H.ckey, 1), SPAN_NOTICE("Someone is attempting to resuscitate you. Re-enter your body if you want to be revived!"))
 
 	//beginning to place the paddles on patient's chest to allow some time for people to move away to stop the process
-	user.visible_message("<span class='warning'>The [user] begins to place [src] on [H]'s chest.</span>", "<span class='warning'>You begin to place [src] on [H]'s chest...</span>")
+	user.visible_message(SPAN_WARNING("The [user] begins to place [src] on [H]'s chest."), SPAN_WARNING("You begin to place [src] on [H]'s chest..."))
 	if(!do_after(user, 3 SECONDS * user.stats.getMult(STAT_BIO, STAT_LEVEL_GODLIKE), H))
 		return
-	user.visible_message("<span class='notice'>The [user] places [src] on [H]'s chest.</span>", "<span class='warning'>You place [src] on [H]'s chest.</span>")
+	user.visible_message(SPAN_NOTICE("The [user] places [src] on [H]'s chest."), SPAN_WARNING("You place [src] on [H]'s chest."))
 	playsound(get_turf(src), 'sound/machines/defib_charge.ogg', 50, 0)
 
 	var/error = can_defib(H)
@@ -218,7 +218,7 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
 		return
 
-	H.visible_message("<span class='warning'>\The [H]'s body convulses a bit.</span>")
+	H.visible_message(SPAN_WARNING("The [H]'s body convulses a bit."))
 	playsound(get_turf(src), "bodyfall", 50, 1)
 	playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 50, 1, -1)
 	set_cooldown(cooldowntime)
@@ -227,13 +227,13 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		if(prob(30))	
 			playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
 			H.electrocute_act(burn_damage_amt*4, src, def_zone = BP_CHEST)
-			user.visible_message("<span class='warning'><i>The paddles were misaligned! The [user] shocks [H] with the [src]!</i></span>", "<span class='warning'>The paddles were misaligned! You shock [H] with the [src]!</span>")
+			user.visible_message(SPAN_WARNING("<i>The paddles were misaligned! The [user] shocks [H] with the [src]!"), SPAN_WARNING("The paddles were misaligned! You shock [H] with the [src]!"))
 			return
 		if(prob(40))
 			playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
 			user.electrocute_act(burn_damage_amt*2, user, def_zone = BP_L_ARM)
 			user.electrocute_act(burn_damage_amt*2, user, def_zone = BP_R_ARM)
-			user.visible_message("<span class='warning'><i>The [user] shocks themselves with the [src]!</i></span>", "<span class='warning'>You forget to move your hands away and shock yourself with the [src]!</span>")
+			user.visible_message(SPAN_WARNING("<i>The [user] shocks themselves with the [src]!</i>"), SPAN_WARNING("You forget to move your hands away and shock yourself with the [src]!"))
 			return
 
 //set oxyloss so that the patient is just barely in crit, if possible
@@ -243,18 +243,18 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	make_alive(H)
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
 
-/obj/item/weapon/defibrillator/proc/do_electrocute(mob/living/carbon/human/H, mob/user, var/target_zone)
+/obj/item/weapon/defibrillator/proc/do_electrocute(mob/living/carbon/human/H, mob/user, target_zone)
 	var/obj/item/organ/external/affecting = H.get_organ(target_zone)
 	if(!affecting)
-		to_chat(user, "<span class='warning'>They are missing that body part!</span>")
+		to_chat(user, SPAN_WARNING("They are missing that body part!"))
 		return
 
 	//no need to spend time carefully placing the paddles, we're just trying to shock them
-	user.visible_message("<span class='danger'>The [user] slaps [src] onto [H]'s [affecting.name].</span>", "<span class='danger'>You overcharge [src] and slap them onto [H]'s [affecting.name].</span>")
+	user.visible_message(SPAN_DANGER("The [user] slaps [src] onto [H]'s [affecting.name]."), SPAN_DANGER("You overcharge [src] and slap them onto [H]'s [affecting.name]."))
 
 	//Just stop at awkwardly slapping electrodes on people if the safety is enabled
 	if(safety)
-		to_chat(user, "<span class='warning'>You can't do that while the safety is enabled.</span>")
+		to_chat(user, SPAN_WARNING("You can't do that while the safety is enabled."))
 		return
 
 	//deduct charge here, in case the base unit was EMPed or something during the delay time
@@ -263,7 +263,7 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
 		return
 
-	user.visible_message("<span class='danger'><i>The [user] shocks [H] with \the [src]!</i></span>", "<span class='warning'>You shock [H] with \the [src]!</span>")
+	user.visible_message(SPAN_DANGER("<i>The [user] shocks [H] with \the [src]!</i>"), SPAN_WARNING("You shock [H] with the [src]!"))
 	playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
 	playsound(loc, 'sound/weapons/Egloves.ogg', 100, 1, -1)
 	set_cooldown(cooldowntime)
@@ -274,7 +274,7 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 		H.emote("scream")
 	var/obj/item/organ/internal/heart/doki = LAZYACCESS(affecting.internal_organs, BP_HEART)
 	if(istype(doki) && doki.pulse && !doki.open && prob(10))
-		to_chat(doki, "<span class='danger'>Your [doki] has stopped!</span>")
+		to_chat(doki, SPAN_DANGER("Your [doki] has stopped!"))
 		doki.pulse = PULSE_NONE
 
 	admin_attack_log(user, H, "Electrocuted using \a [src]", "Was electrocuted with \a [src]", "used \a [src] to electrocute")
@@ -299,10 +299,10 @@ obj/item/weapon/defibrillator/proc/set_cooldown(var/delay)
 	M.updatehealth()
 	apply_brain_damage(M, deadtime)
 
-/obj/item/weapon/defibrillator/proc/make_announcement(var/message, var/msg_class)
+/obj/item/weapon/defibrillator/proc/make_announcement(message, msg_class)
 	audible_message("<b>The [src]</b> [message]", "The [src] vibrates slightly.")
 
-obj/item/weapon/defibrillator/proc/apply_brain_damage(mob/living/carbon/human/H, var/deadtime)
+obj/item/weapon/defibrillator/proc/apply_brain_damage(mob/living/carbon/human/H, deadtime)
 	if(deadtime < DEFIB_TIME_LOSS) return
 
 	if(!H.should_have_organ(BP_BRAIN)) return //no brain
@@ -313,18 +313,18 @@ obj/item/weapon/defibrillator/proc/apply_brain_damage(mob/living/carbon/human/H,
 	var/brain_damage = CLAMP((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
 	H.setBrainLoss(brain_damage)
 
-/obj/item/weapon/defibrillator/emag_act(var/uses, var/mob/user, var/obj/item/weapon/defibrillator/base)
+/obj/item/weapon/defibrillator/emag_act(var/uses, var/mob/user, obj/item/weapon/defibrillator/base)
 	if(!base)
 		return
 	if(safety)
 		safety = FALSE
-		to_chat(user, "<span class='warning'>You silently disable the [src]'s safety protocols with the cryptographic sequencer.</span>")
+		to_chat(user, SPAN_WARNING("You silently disable the [src]'s safety protocols with the cryptographic sequencer."))
 		burn_damage_amt *= 3
 		base.update_icon()
 		return TRUE
 	else
 		safety = TRUE
-		to_chat(user, "<span class='notice'>You silently enable the [src]'s safety protocols with the cryptographic sequencer.</span>")
+		to_chat(user, SPAN_NOTICE("You silently enable the [src]'s safety protocols with the cryptographic sequencer."))
 		burn_damage_amt = initial(burn_damage_amt)
 		base.update_icon()
 		return FALSE
