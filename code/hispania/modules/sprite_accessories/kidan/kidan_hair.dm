@@ -2,7 +2,7 @@
 /datum/sprite_accessory/facial_hair/kidan
 	icon = 'icons/hispania/mob/human_races/species/kidan/kidan_hair.dmi'
 	species_allowed = list(SPECIES_KIDAN)
-	do_colouration = TRUE
+	do_colouration = FALSE
 
 /datum/sprite_accessory/facial_hair/kidan/hollow_horns
 	name = "Hollow Horns"

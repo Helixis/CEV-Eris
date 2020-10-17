@@ -1,4 +1,10 @@
 
+// .25 handguns
+
+/datum/design/autolathe/gun/mandella
+	name = "FS HG .25 Auto \"Mandella\""
+	build_path = /obj/item/weapon/gun/projectile/mandella
+
 // .35 handguns
 
 /datum/design/autolathe/gun/olivaw
@@ -24,10 +30,6 @@
 /datum/design/autolathe/gun/mk58_wood
 	name = "NT HG .35 \"Mk58\""
 	build_path = /obj/item/weapon/gun/projectile/mk58/wood
-
-/datum/design/autolathe/gun/mandella
-	name = "FS HG .35 Auto \"Mandella\""
-	build_path = /obj/item/weapon/gun/projectile/mandella
 
 /datum/design/autolathe/gun/colt
 	name = "FS HG .35 Auto \"Colt M1911\""
@@ -229,6 +231,10 @@
 /datum/design/autolathe/gun/plasma/cassad
 	name = "FS PR \"Cassad\""
 	build_path = /obj/item/weapon/gun/energy/plasma/cassad
+
+/datum/design/autolathe/gun/plasma/martyr
+	name = "NT PR \"Martyr\""
+	build_path = /obj/item/weapon/gun/energy/plasma/martyr
 
 // Special
 /datum/design/autolathe/gun/reclaimer

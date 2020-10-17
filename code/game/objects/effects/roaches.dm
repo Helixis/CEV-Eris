@@ -13,7 +13,7 @@
 	else
 		visible_message(SPAN_WARNING("\The [src] have been attacked with \the [I][(user ? " by [user]." : ".")]"))
 
-	health -= (I.force / 2.0)
+	health -= (I.force / 2)
 	healthcheck()
 
 /obj/effect/roach/bullet_act(var/obj/item/projectile/Proj)
@@ -37,6 +37,7 @@
 	desc = "A cockroach egg. It seems to pulse slightly with an inner life."
 	icon_state = "roach_egg"
 	var/amount_grown = 0
+	var/generation = 0 //This variable determinates how many ancestors has had a roach
 
 /obj/effect/roach/roach_egg/New(var/location, var/atom/parent)
 	pixel_x = rand(3,-3)
@@ -56,7 +57,7 @@
 /obj/effect/roach/roach_egg/Process()
 	amount_grown += rand(0,2)
 	if(amount_grown >= 100)
-		var/obj/item/organ/external/O = null
+		var/obj/item/organ/external/O
 		if(istype(loc, /obj/item/organ/external)) // In case you want to implant some roach eggs into someone, gross!
 			O = loc
 			src.visible_message(SPAN_WARNING("A roachling makes its way out of [O.owner ? "[O.owner]\'s [O.name]" : "\the [O]"]!"))
@@ -66,7 +67,8 @@
 			src.loc = O.owner ? O.owner.loc : O.loc
 
 		var/spawn_type = /mob/living/carbon/superior_animal/roach/roachling
-		new spawn_type(src.loc, src)
+		var/mob/living/carbon/superior_animal/roach/roachling/R = new spawn_type(src.loc, src)
+		R.generation = generation
 		qdel(src)
 
 /obj/effect/decal/cleanable/roach_egg_remains

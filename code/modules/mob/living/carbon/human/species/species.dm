@@ -67,11 +67,6 @@
 	var/list/hair_styles
 	var/list/facial_hair_styles
 
-	//Head accessory colour and style
-	var/default_headacc				//Default head accessory style for newly created humans unless otherwise set.
-	var/default_headacc_colour
-	var/headacc_colour = "#000000"
-	var/ha_style = "None"
 
 	// Death vars.
 	var/meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/human
@@ -137,7 +132,7 @@
 	var/greater_form              // Greater form, if any, ie. human for monkeys.
 	var/holder_type
 	var/gluttonous                // Can eat some mobs. Values can be GLUT_TINY, GLUT_SMALLER, GLUT_ANYTHING.
-	var/rarity_value = 1          // Relative rarity/collector value for this species.
+	var/species_rarity_value = 1          // Relative rarity/collector value for this species.
 	                              // Determines the organs that the species spawns with and
 	var/list/has_organ = list(    // which required-organ checks are conducted.
 		BP_HEART =    /obj/item/organ/internal/heart,

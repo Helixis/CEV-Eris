@@ -16,7 +16,7 @@ var/global/list/robot_modules = list(
 	name = "robot module"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "std_module"
-	w_class = 100.0
+	w_class = 100
 	item_state = "electronic"
 	flags = CONDUCT
 	var/hide_on_manifest = FALSE
@@ -41,9 +41,9 @@ var/global/list/robot_modules = list(
 	var/no_slip = 0
 	var/list/modules = list()
 	var/list/datum/matter_synth/synths = list()
-	var/obj/item/emag = null
-	var/obj/item/malfAImodule = null
-	var/obj/item/borg/upgrade/jetpack = null
+	var/obj/item/emag
+	var/obj/item/malfAImodule
+	var/obj/item/borg/upgrade/jetpack
 	var/list/subsystems = list()
 	var/list/obj/item/borg/upgrade/supported_upgrades = list()
 
@@ -53,8 +53,8 @@ var/global/list/robot_modules = list(
 
 	//Module stats, these are applied to the robot
 	health = 200 //Max health. Apparently this is already defined in item.dm
-	var/speed_factor = 1.0 //Speed factor, applied as a divisor on movement delay
-	var/power_efficiency = 1.0 //Power efficiency, applied as a divisor on power taken from the internal cell
+	var/speed_factor = 1 //Speed factor, applied as a divisor on movement delay
+	var/power_efficiency = 1 //Power efficiency, applied as a divisor on power taken from the internal cell
 
 	//Stat modifiers for skillchecks
 	var/list/stat_modifiers = list(
@@ -160,7 +160,7 @@ var/global/list/robot_modules = list(
 	..()
 	return
 
-/obj/item/weapon/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R, var/rate)
+/obj/item/weapon/robot_module/proc/respawn_consumable(mob/living/silicon/robot/R, var/rate)
 	var/obj/item/device/flash/F = locate() in src.modules
 	if(F)
 		if(F.broken)
@@ -228,10 +228,6 @@ var/global/list/robot_modules = list(
 /obj/item/weapon/robot_module/proc/remove_status_flags(var/mob/living/silicon/robot/R)
 	if(!can_be_pushed)
 		R.status_flags |= CANPUSH
-
-
-
-
 
 
 //The generic robot, a good choice for any situation. Moderately good at everything
@@ -369,7 +365,7 @@ var/global/list/robot_modules = list(
 	..(R)
 
 
-/obj/item/weapon/robot_module/medical/general/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/weapon/robot_module/medical/general/respawn_consumable(mob/living/silicon/robot/R, var/amount)
 	var/obj/item/weapon/reagent_containers/syringe/S = locate() in src.modules
 	if(S.mode == 2)
 		S.reagents.clear_reagents()
@@ -488,7 +484,10 @@ var/global/list/robot_modules = list(
 					"Sleek" = "sleekengineer",
 					"Spider" = "spidereng",
 					"Plated" = "ceborg",
-					"Heavy" = "heavyeng"
+					"Heavy" = "heavyeng",
+					"B1" = "b1_droid-tech",
+					"Astromech R4" = "R4_Astromech_C-tech",
+					"Astomech R2" = "R2_Astromech_C-tech"
 					)
 	health = 240 //Slightly above average
 	speed_factor = 1.1 //Slightly above average
@@ -552,6 +551,10 @@ var/global/list/robot_modules = list(
 	var/obj/item/stack/material/cyborg/steel/M = new (src)
 	M.synths = list(metal)
 	src.modules += M
+	
+	var/obj/item/stack/material/cyborg/glass/G = new (src)
+	G.synths = list(glass)
+	src.modules += G
 
 	var/obj/item/stack/rods/cyborg/Ro = new /obj/item/stack/rods/cyborg(src)
 	Ro.synths = list(metal)
@@ -702,7 +705,13 @@ var/global/list/robot_modules = list(
 					"Drone" = "drone-sec",
 					"Classic" = "secborg",
 					"Spider" = "spidersec",
-					"Heavy" = "heavysec"
+					"Heavy" = "heavysec",
+					"Droideka" = "droideka-sec",
+					"Droideka Alt" = "droideka-g-sec",
+					"B2 Droid" = "b2-droid-sec",
+					"Commando" = "bx-commando-sec",
+					"R2 Astromech" = "R2_Astromech_A-sec",
+					"R4 Astromech" = "R4_Astromech_A-sec"
 				)
 
 /obj/item/weapon/robot_module/security/general/New(var/mob/living/silicon/robot/R)
@@ -711,17 +720,17 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/borg/sight/hud/sec(src)
 	src.modules += new /obj/item/weapon/handcuffs/cyborg(src)
 	src.modules += new /obj/item/weapon/melee/baton/robot(src)
-	src.modules += new /obj/item/weapon/gun/energy/taser/mounted/cyborg(src)
+	src.modules += new /obj/item/weapon/gun/energy/gun/mounted/cyborg(src)
 	src.modules += new /obj/item/taperoll/police(src)
 	//src.modules += new /obj/item/device/holowarrant(src)
 	src.modules += new /obj/item/weapon/book/manual/wiki/security_ironparagraphs(src) // book of ironhammer paragraphs
-	src.emag = new /obj/item/weapon/gun/energy/laser/mounted(src)
+	src.emag = new /obj/item/weapon/gun/energy/plasma/mounted/blitz(src)
 	..(R)
 
 
 /obj/item/weapon/robot_module/security/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	..()
-	var/obj/item/weapon/gun/energy/taser/mounted/cyborg/T = locate() in src.modules
+	var/obj/item/weapon/gun/energy/gun/mounted/cyborg/T = locate() in src.modules
 	if(T.cell.charge < T.cell.maxcharge)
 		T.cell.give(T.charge_cost * amount)
 		T.update_icon()
@@ -742,10 +751,11 @@ var/global/list/robot_modules = list(
 					"Classic" = "janbot2",
 					"Buffer" = "mechaduster",
 					"Sleek" = "sleekjanitor",
-					"Maid" = "maidbot"
+					"Maid" = "maidbot",
+					"Assistant" = "tac-droid-service"
 					)
 	health = 250 //Bulky
-	speed_factor = 0.85 //Slow
+	speed_factor = 1.0 // Normal speed, its a cleaning unit and you wouldnt choose it if you sweep floors with ultra slow movement
 	power_efficiency = 0.8 //Poor
 
 	stat_modifiers = list(
@@ -887,7 +897,8 @@ var/global/list/robot_modules = list(
 					"Drone" = "drone-miner",
 					"Classic" = "miner_old",
 					"Heavy" = "heavymine",
-					"Spider" = "spidermining"
+					"Spider" = "spidermining",
+					"Sb1 Droid" = "sb1-droid-mine"
 				)
 	health = 250 //Pretty tough
 	speed_factor = 0.9 //meh
@@ -931,7 +942,7 @@ var/global/list/robot_modules = list(
 					)
 
 	health = 160 //Weak
-	speed_factor = 1.0 //Average
+	speed_factor = 1 //Average
 	power_efficiency = 0.75 //Poor efficiency
 
 	desc = "Built for working in a well-equipped lab, and designed to handle a wide variety of research \
@@ -998,6 +1009,7 @@ var/global/list/robot_modules = list(
 					"Heavy" = "syndi-heavy",
 					"Artillery" = "spidersyndi"
 					)
+	spawn_blacklisted = TRUE
 
 /obj/item/weapon/robot_module/syndicate/New(var/mob/living/silicon/robot/R)
 	src.modules += new /obj/item/device/flash(src)
@@ -1163,9 +1175,6 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/weapon/tool/pickaxe/drill(src)
 	src.modules += new /obj/item/borg/sight/thermal(src)
-	//src.modules += new /obj/item/weapon/gun/energy/net/mounted(src)
-	//src.modules += new /obj/item/weapon/gun/energy/mountedcannon(src)
-	//src.modules += new /obj/item/weapon/melee/energy/glaive(src)
 	src.modules += new /obj/item/weapon/tool/crowbar/robotic(src)
 	src.modules += new /obj/item/weapon/tool/wrench/robotic(src)
 	src.modules += new /obj/item/weapon/tool/screwdriver/robotic(src)

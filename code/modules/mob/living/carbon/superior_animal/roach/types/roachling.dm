@@ -10,6 +10,7 @@
 
 	melee_damage_lower = 2
 	melee_damage_upper = 5
+	spawn_blacklisted = TRUE
 
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/roachmeat
 	meat_amount = 1
@@ -24,7 +25,7 @@
 
 		if(amount_grown >= 100) // Old enough to turn into an adult
 			var/spawn_type
-			if (fed > 0) // If roachling has eaten a corpse
+			if (fed > 0 || prob(generation*15)) // If roachling has eaten a corpse
 				spawn_type = /mob/living/carbon/superior_animal/roach/fuhrer
 			else
 				spawn_type = pickweight(list(/mob/living/carbon/superior_animal/roach = 9,
@@ -34,5 +35,6 @@
 					/mob/living/carbon/superior_animal/roach/hunter = 4,
 					/mob/living/carbon/superior_animal/roach/support = 4,
 					/mob/living/carbon/superior_animal/roach/fuhrer = 0.5))
-			new spawn_type(src.loc, src)
+			var/mob/living/carbon/superior_animal/roach/R = new spawn_type(src.loc, src)
+			R.generation = generation
 			qdel(src)

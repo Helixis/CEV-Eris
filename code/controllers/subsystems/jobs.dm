@@ -156,22 +156,23 @@ SUBSYSTEM_DEF(job)
 
 				if(age < job.minimum_character_age) // Nope.
 					continue
-
+				var/real_ideal_age = get_ideal_age(V, job.ideal_character_age) //esto fue cambiaado por hispanoia
 				switch(age)
-					if(job.minimum_character_age to (job.minimum_character_age+10))
+					//if(job.minimum_character_age to (job.minimum_character_age+10))
+						//weightedCandidates[V] = 3 // Still a bit young.
+					if(0 to (real_ideal_age-10))
 						weightedCandidates[V] = 3 // Still a bit young.
-					if((job.minimum_character_age+10) to (job.ideal_character_age-10))
-						weightedCandidates[V] = 6 // Better.
-					if((job.ideal_character_age-10) to (job.ideal_character_age+10))
+					if((real_ideal_age-10) to (real_ideal_age-5))
+						weightedCandidates[V] = 6 // Still a bit young. //hasta esta linea llegan los cambios de hispania
+					if((real_ideal_age-5) to (real_ideal_age+10))
 						weightedCandidates[V] = 10 // Great.
-					if((job.ideal_character_age+10) to (job.ideal_character_age+20))
+					if((real_ideal_age+10) to (real_ideal_age+20))
 						weightedCandidates[V] = 6 // Still good.
-					if((job.ideal_character_age+20) to INFINITY)
+					if((real_ideal_age+20) to INFINITY)
 						weightedCandidates[V] = 3 // Geezer.
-					else
-						// If there's ABSOLUTELY NOBODY ELSE
-						if(candidates.len == 1) weightedCandidates[V] = 1
-
+				if(V.client.prefs.species != SPECIES_HUMAN)//si no es humano tiene una minima posibilidad de ser del comando because es una nave humana
+					weightedCandidates[V] /= 2
+				if(candidates.len == 1) weightedCandidates[V] = 1 // If there's ABSOLUTELY NOBODY ELSE
 
 			var/mob/new_player/candidate = pickweight(weightedCandidates)
 			if(AssignRole(candidate, command_position))
@@ -581,5 +582,5 @@ proc/EquipCustomLoadout(var/mob/living/carbon/human/H, var/datum/job/job)
 /datum/controller/subsystem/job/proc/ShouldCreateRecords(var/title)
 	if(!title) return 0
 	var/datum/job/job = GetJob(title)
-	if(!job) return 0
+	if(!job || job == "Vagabond") return 0
 	return job.create_record

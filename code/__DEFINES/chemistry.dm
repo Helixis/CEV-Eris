@@ -39,6 +39,7 @@
 // Some on_mob_life() procs check for alien races.
 #define IS_XENOS   1
 #define IS_KIDAN   5    //RAZA HISPANA, PONER SIEMPRE UN NUMERO SUPERIOR AL DE LAS RAZAS DE ERIS
+#define IS_SKRELL  6    //RAZA HISPANA
 
 #define CE_STABLE "stable" // Inaprovaline
 #define CE_ANTIBIOTIC "antibiotic" // Spaceacilin

@@ -96,7 +96,8 @@
 					spawn(50)
 						if(busy == LAYING_EGG)
 							if(!(locate(/obj/effect/roach/roach_egg) in get_turf(src)))
-								new /obj/effect/roach/roach_egg(loc, src)
+								var/obj/effect/roach/roach_egg/E = new /obj/effect/roach/roach_egg(loc, src)
+								E.generation = generation + 1
 								fed--
 								update_openspace()
 							busy = 0

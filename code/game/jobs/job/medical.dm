@@ -18,7 +18,7 @@
 		access_moebius, access_medical_equip, access_morgue, access_genetics, access_heads,
 		access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 		access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_maint_tunnels,
-		access_external_airlocks, access_paramedic, access_research_equipment
+		access_external_airlocks, access_paramedic, access_research_equipment, access_change_medbay
 	)
 
 	ideal_character_age = 50
@@ -76,7 +76,7 @@ Your second loyalty is to your career with Moebius corp, and to your coworkers i
 
 	access = list(
 		access_moebius, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology,
-		access_genetics
+		access_genetics, access_maint_tunnels
 	)
 
 	stat_modifiers = list(
@@ -136,7 +136,7 @@ Your second loyalty is to your career with Moebius corp, and to your coworkers i
 	outfit_type = /decl/hierarchy/outfit/job/medical/chemist
 
 	access = list(
-		access_moebius, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology
+		access_moebius, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_maint_tunnels
 	)
 
 	stat_modifiers = list(
@@ -189,7 +189,7 @@ Your second loyalty is to your career with Moebius corp, and to your coworkers i
 	outfit_type = /decl/hierarchy/outfit/job/medical/psychiatrist
 
 	access = list(
-		access_moebius, access_medical_equip, access_morgue, access_psychiatrist
+		access_moebius, access_medical_equip, access_morgue, access_psychiatrist, access_maint_tunnels
 	)
 
 	stat_modifiers = list(

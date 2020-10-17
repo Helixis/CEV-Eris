@@ -2,6 +2,7 @@
 	name = "Panzer Roach"
 	desc = "A monstrous, dog-sized cockroach. This one looks more robust than others."
 	icon_state = "panzer"
+	density = TRUE
 	meat_amount = 4
 	turns_per_move = 2
 	maxHealth = 60
@@ -10,6 +11,7 @@
 	mob_size = MOB_MEDIUM
 	density = TRUE
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/roachmeat/panzer
+	rarity_value = 30
 
 // Panzers won't slip over on water or soap.
 /mob/living/carbon/superior_animal/roach/tank/slip(var/slipped_on,stun_duration=8)

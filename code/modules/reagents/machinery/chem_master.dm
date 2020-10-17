@@ -4,10 +4,10 @@
 	density = TRUE
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
-	circuit = /obj/item/weapon/circuitboard/chemmaster
+	circuit = /obj/item/weapon/electronics/circuitboard/chemmaster
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "mixer0"
-	use_power = 1
+	use_power = IDLE_POWER_USE
 	idle_power_usage = 20
 	var/obj/item/weapon/reagent_containers/glass/beaker = null
 	var/mode = 0
@@ -37,9 +37,9 @@
 
 /obj/machinery/chem_master/ex_act(severity)
 	switch(severity)
-		if(1.0)
+		if(1)
 			qdel(src)
-		if(2.0)
+		if(2)
 			if (prob(50))
 				qdel(src)
 
@@ -173,7 +173,7 @@
 					if("By volume")
 						amount_per_pill = input("Select the volume that single pill should contain.", "Max [R.total_volume]", 5) as num
 						amount_per_pill = CLAMP(amount_per_pill, 1, reagents.total_volume)
-						if (reagents.total_volume > max_pill_vol)
+						if (amount_per_pill > max_pill_vol)
 							alert("Maximum volume supported in pills is [max_pill_vol]","Error.","Ok")
 							return
 						if ((reagents.total_volume / amount_per_pill) > max_pill_count)
