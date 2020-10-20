@@ -2,7 +2,6 @@
 	name = "Panzer Roach"
 	desc = "A monstrous, dog-sized cockroach. This one looks more robust than others."
 	icon_state = "panzer"
-	density = TRUE
 	meat_amount = 4
 	turns_per_move = 2
 	maxHealth = 60
