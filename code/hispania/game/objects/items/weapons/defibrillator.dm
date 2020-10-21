@@ -60,6 +60,8 @@
 		to_chat(user, "The charge meter is showing [cell.percent()]% charge left.")
 	else
 		to_chat(user, "There is no cell inside")
+	if(!safety)
+		to_chat(user, "The security protocolos are disabled!")
 
 /obj/item/weapon/defibrillator/attackby(obj/item/weapon/W, mob/user, params)
 	if(istype(W, /obj/item/weapon/cell))
@@ -300,21 +302,13 @@ obj/item/weapon/defibrillator/proc/apply_brain_damage(mob/living/carbon/human/H,
 	var/brain_damage = CLAMP((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
 	H.setBrainLoss(brain_damage)
 
-/obj/item/weapon/defibrillator/emag_act(var/uses, var/mob/user, obj/item/weapon/defibrillator/base)
-	if(!base)
-		return
-	if(safety)
+/obj/item/weapon/defibrillator/emag_act(var/uses, var/mob/user)
+	if(!safety)
 		safety = FALSE
 		to_chat(user, SPAN_WARNING("You silently disable the [src]'s safety protocols with the cryptographic sequencer."))
 		burn_damage_amt *= 3
-		base.update_icon()
+		update_icon()
 		return TRUE
-	else
-		safety = TRUE
-		to_chat(user, SPAN_NOTICE("You silently enable the [src]'s safety protocols with the cryptographic sequencer."))
-		burn_damage_amt = initial(burn_damage_amt)
-		base.update_icon()
-		return FALSE
 
 /obj/item/weapon/defibrillator/emp_act(severity)
 	var/new_safety = rand(0, 1)
