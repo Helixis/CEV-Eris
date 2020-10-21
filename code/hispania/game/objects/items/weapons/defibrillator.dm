@@ -12,24 +12,27 @@
 	throwforce = 6
 	w_class = ITEM_SIZE_BULKY
 
-	var/obj/item/weapon/cell/cell
-	var/suitable_cell = /obj/item/weapon/cell/medium
+	var/obj/item/weapon/cell/medium/cell
+	var/suitable_cell = /obj/item/weapon/cell/medium/super
 	var/chargecost = 50
-	var/chargetime = (2 SECONDS)	
+	var/chargetime = 2 SECONDS
 	var/cooldown = FALSE
-	var/cooldowntime = (5 SECONDS)
+	var/cooldowntime = 5 SECONDS
 	var/busy = FALSE
 	var/active = FALSE
 	var/combat = FALSE
 	var/safety = TRUE
 	var/burn_damage_amt = 5
 
-/obj/item/weapon/defibrillator/Initialize()
-	. = ..()
-	if(!cell && suitable_cell)
-		cell = new /obj/item/weapon/cell/medium/super(src)
-		update_icon()
+/obj/item/weapon/defibrillator/loaded
+        spawn_frequency = 0
 
+/obj/item/weapon/defibrillator/loaded/Initialize()
+    . = ..()
+    if(!cell && suitable_cell)
+        cell = new suitable_cell(src)
+        update_icon()
+		
 /obj/item/weapon/defibrillator/Destroy()
 	. = ..()
 	QDEL_NULL(cell)
@@ -83,17 +86,10 @@
 /obj/item/weapon/defibrillator/attack_self(mob/living/user)
 	if(!cell)
 		to_chat(user, SPAN_NOTICE("You cannot turn on the [src] without a cell!."))
-		update_icon()
-	else
-		if(!active)
-			to_chat(user,	SPAN_NOTICE("You turn the [src] on ."))
-			active = TRUE
-			update_icon()
-		else
-			to_chat(user, SPAN_NOTICE("You turn the [src] off ."))
-			active = FALSE
-			update_icon()
-			return
+	else	
+		active = !active
+		to_chat(user, SPAN_NOTICE("You turn the [src] [active ? "on" : "off"] ."))
+	update_icon()
 		
 /obj/item/weapon/defibrillator/proc/set_cooldown(delay)
 	cooldown = TRUE
@@ -123,7 +119,7 @@
 
 /obj/item/weapon/defibrillator/proc/active_heart(mob/user, mob/living/carbon/human/H)
 	if(H.stat != DEAD)
-		to_chat(user, SPAN_WARNING("The [H]'s Hearth is active!."))	
+		to_chat(user, SPAN_WARNING("ERROR: [H] is alive!."))	
 		return TRUE
 	return FALSE
 
@@ -164,27 +160,18 @@
 
 	if(can_use(user, H) && !active_heart(user, H))
 		busy = TRUE
-		update_icon()
-
 		do_revive(H, user)
-
 		busy = FALSE
 		update_icon()
-
 	return TRUE
 
 /obj/item/weapon/defibrillator/apply_hit_effect(mob/living/target, mob/living/user, hit_zone)
 	if(ishuman(target) && can_use(user, target))
 		busy = TRUE
-		update_icon()
-
 		do_electrocute(target, user, hit_zone)
-
 		busy = FALSE
 		update_icon()
-
 		return TRUE	
-
 	return ..()
 
 /obj/item/weapon/defibrillator/proc/do_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
