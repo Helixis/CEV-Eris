@@ -40,8 +40,10 @@
 #define LANGUAGE_CULT "Cult"
 #define LANGUAGE_OCCULT "Occult"
 #define LANGUAGE_BLITZ "Blitzshell Communique"
-#define LANGUAGE_KIDAN "Chittin" //hispania
-#define LANGUAGE_SKRELL "Skrellian"//hispania
+// Languages Hispania.
+#define LANGUAGE_KIDAN "Chittin"
+#define LANGUAGE_SKRELL "Skrellian"
+#define LANGUAGE_DIONA "Rootspeak"
 
 // Language flags.
 #define WHITELISTED  1   // Language is available if the speaker is whitelisted.

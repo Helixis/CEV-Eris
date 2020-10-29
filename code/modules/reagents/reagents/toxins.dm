@@ -257,6 +257,12 @@
 		T.update_icon()
 		return
 
+/datum/reagent/toxin/plantbgone/affect_touch(mob/living/carbon/human/M, alien, effect_multiplier)
+	..()
+	if(isdiona(M))
+		M.apply_damage(15, BURN)
+		M.visible_message(SPAN_WARNING("[M]'s flesh sizzles where the liquid touches it!"), SPAN_DANGER("Your flesh burns in the liquid!"))
+
 /datum/reagent/acid/polyacid
 	name = "Polytrinic acid"
 	id = "pacid"
@@ -502,7 +508,7 @@
 		var/obj/item/organ/internal/liver/L = H.internal_organs_by_name[BP_LIVER]
 		if(istype(L))
 			L.take_damage(strength, 0)
-	if(issmall(M)) 
+	if(issmall(M))
 		M.adjustToxLoss(strength * 2)
 	else
 		M.adjustToxLoss(strength)

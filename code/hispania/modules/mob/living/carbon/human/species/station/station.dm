@@ -99,3 +99,60 @@
 
 /datum/species/skrell/get_bodytype()
 	return SPECIES_SKRELL
+
+/datum/species/dionae
+	name = SPECIES_DIONA
+	name_plural = "Dionaea"
+	icobase = 'icons/hispania/mob/human_races/r_plant.dmi'
+	deform = 'icons/hispania/mob/human_races/r_def_plant.dmi'
+	faceicobase = 'icons/hispania/mob/human_face.dmi'
+	name_language = LANGUAGE_DIONA
+	language = LANGUAGE_DIONA
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)
+	speech_sounds = list('sound/voice/dionatalk1.ogg') 
+	speech_chance = 20
+	taste_sensitivity = TASTE_DULL
+	min_age = 15
+	max_age = 1000
+
+	blurb = "Commonly referred to (erroneously) as 'plant people', the Dionaea are a strange space-dwelling collective \
+	species hailing from Epsilon Ursae Minoris. Each 'diona' is a cluster of numerous cat-sized organisms called nymphs; \
+	there is no effective upper limit to the number that can fuse in gestalt, and reports exist	of the Epsilon Ursae \
+	Minoris primary being ringed with a cloud of singing space-station-sized entities.<br/><br/>The Dionaea coexist peacefully with \
+	all known species, especially the Skrell. Their communal mind makes them slow to react, and they have difficulty understanding \
+	even the simplest concepts of other minds. Their alien physiology allows them survive happily off a diet of nothing but light, \
+	water and other radiation."
+
+	blood_color = "#004400"
+	flesh_color = "#907E4A"
+
+	brute_mod = 0.75
+	radiation_mod = 0.75
+	burn_mod = 1.4
+	slowdown = 3
+	genders = list(NEUTER)
+	has_organ = list(
+		BP_HEART =    /obj/item/organ/internal/heart/diona,
+		BP_LUNGS =    /obj/item/organ/internal/lungs/diona,
+		BP_LIVER =    /obj/item/organ/internal/liver/diona,
+		BP_KIDNEYS =  /obj/item/organ/internal/kidneys/diona,
+		BP_BRAIN =    /obj/item/organ/internal/brain/diona,
+		BP_APPENDIX  = /obj/item/organ/internal/appendix,
+		BP_EYES  =     /obj/item/organ/internal/eyes/diona, //Default darksight of 2.
+		)
+
+/datum/species/dionae/get_bodytype()
+	return SPECIES_DIONA
+	
+
+/datum/species/dionae/onLife(mob/living/carbon/human/H)
+	var/light_amount = 0
+	if(isturf(H.loc)) //else, there's considered to be no light
+		var/turf/T = H.loc
+		light_amount = min(1, T.get_lumcount()) - 0.5
+		H.adjustNutrition(light_amount * 10)
+		if(light_amount > 0.2)
+			H.adjustFireLoss(-1)
+			H.adjustBruteLoss(-1)
+			H.adjustToxLoss(-1)
+			H.adjustOxyLoss(-1)

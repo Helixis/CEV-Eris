@@ -70,6 +70,8 @@
 
 		handle_medical_side_effects()
 
+		species?.onLife(src) //hispania species
+
 		if(!client)
 			species.handle_npc(src)
 
