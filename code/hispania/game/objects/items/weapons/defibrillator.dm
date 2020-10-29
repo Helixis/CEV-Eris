@@ -161,17 +161,13 @@
 		return ..() //Do a regular attack. Harm intent shocking happens as a hit effect
 
 	if(can_use(user, H) && !active_heart(user, H))
-		busy = TRUE
 		do_revive(H, user)
-		busy = FALSE
 		update_icon()
 	return TRUE
 
 /obj/item/weapon/defibrillator/apply_hit_effect(mob/living/target, mob/living/user, hit_zone)
 	if(ishuman(target) && can_use(user, target))
-		busy = TRUE
 		do_electrocute(target, user, hit_zone)
-		busy = FALSE
 		update_icon()
 		return TRUE	
 	return ..()
@@ -182,10 +178,13 @@
 
 	//beginning to place the paddles on patient's chest to allow some time for people to move away to stop the process
 	user.visible_message(SPAN_WARNING("The [user] begins to place [src] on [H]'s chest."), SPAN_WARNING("You begin to place [src] on [H]'s chest..."))
+	busy = TRUE
 	if(!do_after(user, 3 SECONDS * user.stats.getMult(STAT_BIO, STAT_LEVEL_GODLIKE), H))
+		busy = FALSE
 		return
 	user.visible_message(SPAN_NOTICE("The [user] places [src] on [H]'s chest."), SPAN_WARNING("You place [src] on [H]'s chest."))
 	playsound(get_turf(src), 'sound/machines/defib_charge.ogg', 50, 0)
+	busy = FALSE
 
 	var/error = can_defib(H)
 	if(error)
@@ -198,6 +197,7 @@
 		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
 		return
 	//placed on chest and short delay to shock for dramatic effect, revive time is 5sec total
+
 	if(!do_after(user, chargetime, H))
 		return
 
