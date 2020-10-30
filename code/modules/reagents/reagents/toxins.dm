@@ -90,7 +90,7 @@
 	if(prob(80))
 		M.adjustBrainLoss(2)
 	if(strength)
-		if(issmall(M)) 
+		if(issmall(M))
 			M.adjustToxLoss(strength)
 		else
 			M.adjustToxLoss(strength)
@@ -256,12 +256,6 @@
 		T.pestlevel = 0
 		T.update_icon()
 		return
-
-/datum/reagent/toxin/plantbgone/affect_touch(mob/living/carbon/human/M, alien, effect_multiplier)
-	..()
-	if(isdiona(M))
-		M.apply_damage(15, BURN)
-		M.visible_message(SPAN_WARNING("[M]'s flesh sizzles where the liquid touches it!"), SPAN_DANGER("Your flesh burns in the liquid!"))
 
 /datum/reagent/acid/polyacid
 	name = "Polytrinic acid"

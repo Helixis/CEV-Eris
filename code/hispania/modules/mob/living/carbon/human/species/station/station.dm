@@ -109,7 +109,7 @@
 	name_language = LANGUAGE_DIONA
 	language = LANGUAGE_DIONA
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)
-	speech_sounds = list('sound/voice/dionatalk1.ogg') 
+	speech_sounds = list('sound/voice/dionatalk1.ogg')
 	speech_chance = 20
 	taste_sensitivity = TASTE_DULL
 	min_age = 15
@@ -143,7 +143,7 @@
 
 /datum/species/dionae/get_bodytype()
 	return SPECIES_DIONA
-	
+
 
 /datum/species/dionae/onLife(mob/living/carbon/human/H)
 	var/light_amount = 0

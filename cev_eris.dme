@@ -1257,6 +1257,8 @@
 #include "code\hispania\modules\organs\internal\kidan.dm"
 #include "code\hispania\modules\organs\internal\skrell.dm"
 #include "code\hispania\modules\reagents\reagent_containers\food\cans.dm"
+#include "code\hispania\modules\reagents\reagents\core.dm"
+#include "code\hispania\modules\reagents\reagents\toxins.dm"
 #include "code\hispania\modules\sprite_accessories\human\human_hair.dm"
 #include "code\hispania\modules\sprite_accessories\kidan\kidan_facial.dm"
 #include "code\hispania\modules\sprite_accessories\kidan\kidan_hair.dm"
