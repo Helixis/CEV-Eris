@@ -131,6 +131,7 @@
 	burn_mod = 1.4
 	slowdown = 3
 	genders = list(NEUTER)
+	spawn_flags = CAN_JOIN
 	has_organ = list(
 		BP_HEART =    /obj/item/organ/internal/heart/diona,
 		BP_LUNGS =    /obj/item/organ/internal/lungs/diona,
