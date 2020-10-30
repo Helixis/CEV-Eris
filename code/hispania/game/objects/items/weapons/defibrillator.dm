@@ -103,7 +103,7 @@
 			update_icon()
 
 			make_announcement("beeps, \"Unit is re-energized.\"", "notice")
-			playsound(src, 'sound/machines/defib_ready.ogg', 50, 0)
+			playsound(src, 'sound/hispania/machines/defib_ready.ogg', 50, 0)
 
 /obj/item/weapon/defibrillator/proc/can_use(mob/user, mob/living/carbon/human/H)
 	if(busy)
@@ -183,18 +183,18 @@
 		busy = FALSE
 		return
 	user.visible_message(SPAN_NOTICE("The [user] places [src] on [H]'s chest."), SPAN_WARNING("You place [src] on [H]'s chest."))
-	playsound(get_turf(src), 'sound/machines/defib_charge.ogg', 50, 0)
+	playsound(get_turf(src), 'sound/hispania/machines/defib_charge.ogg', 50, 0)
 	busy = FALSE
 
 	var/error = can_defib(H)
 	if(error)
 		make_announcement(error, "warning")
-		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
+		playsound(get_turf(src), 'sound/hispania/machines/defib_failed.ogg', 50, 0)
 		return
 
 	if(check_blood_level(H))
 		make_announcement("buzzes, \"Warning - Patient is in hypovolemic shock and may require a blood transfusion.\"", "warning")	 //also includes heart damage
-		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
+		playsound(get_turf(src), 'sound/hispania/machines/defib_failed.ogg', 50, 0)
 		return
 	//placed on chest and short delay to shock for dramatic effect, revive time is 5sec total
 
@@ -204,22 +204,22 @@
 	//deduct charge here, in case the base unit was EMPed or something during the delay time
 	if(!checked_use(chargecost))
 		make_announcement("buzzes, \"Insufficient charge.\"", "warning")
-		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
+		playsound(get_turf(src), 'sound/hispania/machines/defib_failed.ogg', 50, 0)
 		return
 
 	H.visible_message(SPAN_WARNING("The [H]'s body convulses a bit."))
 	playsound(get_turf(src), "bodyfall", 50, 1)
-	playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 50, 1, -1)
+	playsound(get_turf(src), 'sound/hispania/machines/defib_zap.ogg', 50, 1, -1)
 	set_cooldown(cooldowntime)
 
 	if(!user.stat_check(STAT_BIO, STAT_LEVEL_BASIC))
 		if(prob(30))	
-			playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
+			playsound(get_turf(src), 'sound/hispania/machines/defib_zap.ogg', 100, 1, -1)
 			H.electrocute_act(burn_damage_amt*4, src, def_zone = BP_CHEST)
 			user.visible_message(SPAN_WARNING("<i>The paddles were misaligned! The [user] shocks [H] with the [src]!"), SPAN_WARNING("The paddles were misaligned! You shock [H] with the [src]!"))
 			return
 		if(prob(40))
-			playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
+			playsound(get_turf(src), 'sound/hispania/machines/defib_zap.ogg', 100, 1, -1)
 			user.electrocute_act(burn_damage_amt*2, user, def_zone = BP_L_ARM)
 			user.electrocute_act(burn_damage_amt*2, user, def_zone = BP_R_ARM)
 			user.visible_message(SPAN_WARNING("<i>The [user] shocks themselves with the [src]!</i>"), SPAN_WARNING("You forget to move your hands away and shock yourself with the [src]!"))
@@ -227,7 +227,7 @@
 
 //set oxyloss so that the patient is just barely in crit, if possible
 	make_announcement("pings, \"Resuscitation successful.\"", "notice")
-	playsound(get_turf(src), 'sound/machines/defib_success.ogg', 50, 0)
+	playsound(get_turf(src), 'sound/hispania/machines/defib_success.ogg', 50, 0)
 	H.AdjustSleeping(-60)
 	make_alive(H)
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
@@ -249,11 +249,11 @@
 	//deduct charge here, in case the base unit was EMPed or something during the delay time
 	if(!checked_use(chargecost))
 		make_announcement("buzzes, \"Insufficient charge.\"", "warning")
-		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
+		playsound(get_turf(src), 'sound/hispania/machines/defib_failed.ogg', 50, 0)
 		return
 
 	user.visible_message(SPAN_DANGER("<i>The [user] shocks [H] with \the [src]!</i>"), SPAN_WARNING("You shock [H] with the [src]!"))
-	playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
+	playsound(get_turf(src), 'sound/hispania/machines/defib_zap.ogg', 100, 1, -1)
 	playsound(loc, 'sound/weapons/Egloves.ogg', 100, 1, -1)
 	set_cooldown(cooldowntime)
 
@@ -316,10 +316,10 @@ obj/item/weapon/defibrillator/proc/apply_brain_damage(mob/living/carbon/human/H,
 		safety = new_safety
 		if(safety)
 			make_announcement("beeps, \"Safety protocols enabled!\"", "notice")
-			playsound(get_turf(src), 'sound/machines/defib_safetyon.ogg', 50, 0)
+			playsound(get_turf(src), 'sound/hispania/machines/defib_safetyon.ogg', 50, 0)
 		else
 			make_announcement("beeps, \"Safety protocols disabled!\"", "warning")
-			playsound(get_turf(src), 'sound/machines/defib_safetyoff.ogg', 50, 0)
+			playsound(get_turf(src), 'sound/hispania/machines/defib_safetyoff.ogg', 50, 0)
 		update_icon()
 	..()
 
