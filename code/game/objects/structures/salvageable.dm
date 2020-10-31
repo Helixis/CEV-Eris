@@ -4,7 +4,7 @@
 	icon = 'icons/obj/salvageable.dmi'
 	density = TRUE
 	anchored = TRUE
-	bad_types = /obj/structure/salvageable
+	bad_type = /obj/structure/salvageable
 	spawn_frequency = 13
 	spawn_tags = SPAWN_TAG_SALVAGEABLE
 	var/salvageable_parts = list()
@@ -81,7 +81,8 @@
 		/obj/item/weapon/computer_hardware/network_card/advanced = 20,
 		/obj/item/weapon/stock_parts/capacitor/super = 5
 	)
-obj/structure/salvageable/computer/Initialize()
+
+/obj/structure/salvageable/computer/Initialize()
 	. = ..()
 	icon_state = "computer[rand(0,7)]"
 
@@ -279,7 +280,7 @@ obj/structure/salvageable/bliss/Initialize()
 	spawn_tags = SPAWN_TAG_SALVAGEABLE_OS
 	rarity_value = 20
 	spawn_blacklisted = TRUE
-	bad_types = /obj/structure/salvageable/os
+	bad_type = /obj/structure/salvageable/os
 
 /obj/structure/salvageable/os/machine
 	name = "broken machine"
@@ -398,7 +399,7 @@ obj/structure/salvageable/bliss/Initialize()
 		/obj/item/weapon/computer_hardware/network_card/advanced = 40
 	)
 
-/obj/structure/salvageable/console_broken_os
+/obj/structure/salvageable/os/console_broken
 	name = "broken console"
 	icon_state = "os_console_broken"
 	rarity_value = 33

@@ -57,7 +57,6 @@ They generally give more random result and can provide more divercity in spawn.
 	allow_blacklist = TRUE
 	tags_to_spawn = list(SPAWN_ITEM_TECH_OS)
 
-
 //This will be spawned in rare closets
 /obj/spawner/pack/gun_loot
 	name = "Random gun loot"
@@ -73,8 +72,8 @@ They generally give more random result and can provide more divercity in spawn.
 					/obj/spawner/knife = 6,
 					/obj/spawner/ammo = 15,
 					/obj/spawner/ammo/shotgun = 15,
-					/obj/spawner/ammo_ihs = 15,
-					/obj/spawner/ammo_lowcost = 18,
+					/obj/spawner/ammo/ihs = 15,
+					/obj/spawner/ammo/lowcost = 18,
 					/obj/spawner/gun_upgrade = 10,
 					/obj/spawner/cloth/holster = 8
 				))
@@ -89,6 +88,8 @@ They generally give more random result and can provide more divercity in spawn.
 /obj/spawner/pack/rare
 	name = "rare loot"
 	icon_state = "box-orange"
+	rarity_value = 100
+	spawn_tags = SPAWN_TAG_RARE_ITEM
 
 /obj/spawner/pack/rare/item_to_spawn()
 	return pickweight(RANDOM_RARE_ITEM) // made into a define so that rare objects can be spawned for mobs too
@@ -97,8 +98,6 @@ They generally give more random result and can provide more divercity in spawn.
 	name = "low chance rare loot"
 	icon_state = "box-orange-low"
 	spawn_nothing_percentage = 70
-
-
 
 
 //The pack to surpass them all. This pack is meant to be PLACED ON MAP. Not in JUNK CODE, because it CONTAINS JUNK SPAWNER.
@@ -123,8 +122,6 @@ They generally give more random result and can provide more divercity in spawn.
 	name = "low chance random structure"
 	icon_state = "machine-orange-low"
 	spawn_nothing_percentage = 70
-
-
 
 
 //Same pack as above, but it meant to be PLACED TO JUNK CODE. Numbers are a bit different as well

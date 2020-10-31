@@ -15,7 +15,7 @@
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	//Spawn_values
-	bad_types = /obj/item/weapon/cell
+	bad_type = /obj/item/weapon/cell
 	rarity_value = 3
 	spawn_tags = SPAWN_TAG_POWERCELL
 	var/charge = 0	// note %age conveted to actual charge in New
@@ -143,6 +143,10 @@
 
 	to_chat(user, "The manufacturer's label states this cell has a power rating of [maxcharge], and that you should not swallow it.")
 	to_chat(user, "The charge meter reads [round(percent() )]%.")
+
+	if(rigged && user.stats?.getStat(STAT_MEC) >= STAT_LEVEL_ADEPT)
+		to_chat(user, SPAN_WARNING("This cell is ready to short circuit!"))
+
 
 /obj/item/weapon/cell/attackby(obj/item/W, mob/user)
 	..()

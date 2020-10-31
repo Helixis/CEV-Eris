@@ -27,7 +27,7 @@
 #define ANTAG_SKIP_TARGET	-1
 
 // Storyteller names macro
-#define STORYTELLER_BASE "guide"
+#define STORYTELLER_BASE "mime"//el de eris base es "guide", en hispania si no votas el storyteller es el mimo
 
 // antag bantypes macros.
 #define ROLE_BANTYPE_BORER ROLE_BORER
@@ -36,14 +36,12 @@
 #define ROLE_BANTYPE_INQUISITOR ROLE_INQUISITOR
 #define ROLE_BANTYPE_EXCELSIOR ROLE_EXCELSIOR_REV
 #define ROLE_BANTYPE_CARRION ROLE_CARRION
-#define ROLE_BANTYPE_XENOS ROLE_XENOMORPH
 #define ROLE_BANTYPE_CREW_SIDED "crew_sided"
 #define ROLE_BANTYPE_BLITZ ROLE_BLITZ
 
 // antag template macros.
 #define ROLE_BORER "borer"
 #define ROLE_BORER_REPRODUCED "borer_r"
-#define ROLE_XENOMORPH "xeno"
 #define ROLE_LOYALIST "loyalist"
 #define ROLE_MUTINEER "mutineer"
 #define ROLE_COMMANDO "commando"
@@ -66,7 +64,6 @@
 
 #define FACTION_EXCELSIOR "excelsior"
 #define FACTION_BORERS "borers"
-#define FACTION_XENOMORPHS "xenomorphs"
 #define FACTION_SERBS	"serbians"
 
 #define ROLES_CONTRACT list(ROLE_TRAITOR,ROLE_CARRION,ROLE_BLITZ)

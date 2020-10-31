@@ -14,11 +14,13 @@ var/global/list/robot_modules = list(
 
 /obj/item/weapon/robot_module
 	name = "robot module"
+	desc = "This is a robot module parent class. You shouldn't see this description"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "std_module"
 	w_class = 100
 	item_state = "electronic"
 	flags = CONDUCT
+	bad_type = /obj/item/weapon/robot_module
 	var/hide_on_manifest = FALSE
 	var/channels = list()
 	var/networks = list()
@@ -41,9 +43,9 @@ var/global/list/robot_modules = list(
 	var/no_slip = 0
 	var/list/modules = list()
 	var/list/datum/matter_synth/synths = list()
-	var/obj/item/emag = null
-	var/obj/item/malfAImodule = null
-	var/obj/item/borg/upgrade/jetpack = null
+	var/obj/item/emag
+	var/obj/item/malfAImodule
+	var/obj/item/borg/upgrade/jetpack
 	var/list/subsystems = list()
 	var/list/obj/item/borg/upgrade/supported_upgrades = list()
 
@@ -65,9 +67,6 @@ var/global/list/robot_modules = list(
 		STAT_MEC = 5
 	)
 
-
-
-	desc = "This is a robot module parent class. You shouldn't see this description"
 
 /obj/item/weapon/robot_module/New(var/mob/living/silicon/robot/R)
 	..()
@@ -160,7 +159,7 @@ var/global/list/robot_modules = list(
 	..()
 	return
 
-/obj/item/weapon/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R, var/rate)
+/obj/item/weapon/robot_module/proc/respawn_consumable(mob/living/silicon/robot/R, var/rate)
 	var/obj/item/device/flash/F = locate() in src.modules
 	if(F)
 		if(F.broken)
@@ -228,10 +227,6 @@ var/global/list/robot_modules = list(
 /obj/item/weapon/robot_module/proc/remove_status_flags(var/mob/living/silicon/robot/R)
 	if(!can_be_pushed)
 		R.status_flags |= CANPUSH
-
-
-
-
 
 
 //The generic robot, a good choice for any situation. Moderately good at everything
@@ -369,7 +364,7 @@ var/global/list/robot_modules = list(
 	..(R)
 
 
-/obj/item/weapon/robot_module/medical/general/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/weapon/robot_module/medical/general/respawn_consumable(mob/living/silicon/robot/R, var/amount)
 	var/obj/item/weapon/reagent_containers/syringe/S = locate() in src.modules
 	if(S.mode == 2)
 		S.reagents.clear_reagents()
@@ -555,6 +550,10 @@ var/global/list/robot_modules = list(
 	var/obj/item/stack/material/cyborg/steel/M = new (src)
 	M.synths = list(metal)
 	src.modules += M
+	
+	var/obj/item/stack/material/cyborg/glass/G = new (src)
+	G.synths = list(glass)
+	src.modules += G
 
 	var/obj/item/stack/rods/cyborg/Ro = new /obj/item/stack/rods/cyborg(src)
 	Ro.synths = list(metal)
@@ -720,17 +719,17 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/borg/sight/hud/sec(src)
 	src.modules += new /obj/item/weapon/handcuffs/cyborg(src)
 	src.modules += new /obj/item/weapon/melee/baton/robot(src)
-	src.modules += new /obj/item/weapon/gun/energy/taser/mounted/cyborg(src)
+	src.modules += new /obj/item/weapon/gun/energy/gun/mounted/cyborg(src)
 	src.modules += new /obj/item/taperoll/police(src)
 	//src.modules += new /obj/item/device/holowarrant(src)
 	src.modules += new /obj/item/weapon/book/manual/wiki/security_ironparagraphs(src) // book of ironhammer paragraphs
-	src.emag = new /obj/item/weapon/gun/energy/laser/mounted(src)
+	src.emag = new /obj/item/weapon/gun/energy/plasma/mounted/blitz(src)
 	..(R)
 
 
 /obj/item/weapon/robot_module/security/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	..()
-	var/obj/item/weapon/gun/energy/taser/mounted/cyborg/T = locate() in src.modules
+	var/obj/item/weapon/gun/energy/gun/mounted/cyborg/T = locate() in src.modules
 	if(T.cell.charge < T.cell.maxcharge)
 		T.cell.give(T.charge_cost * amount)
 		T.update_icon()
@@ -1009,6 +1008,7 @@ var/global/list/robot_modules = list(
 					"Heavy" = "syndi-heavy",
 					"Artillery" = "spidersyndi"
 					)
+	spawn_blacklisted = TRUE
 
 /obj/item/weapon/robot_module/syndicate/New(var/mob/living/silicon/robot/R)
 	src.modules += new /obj/item/device/flash(src)
@@ -1174,9 +1174,6 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/weapon/tool/pickaxe/drill(src)
 	src.modules += new /obj/item/borg/sight/thermal(src)
-	//src.modules += new /obj/item/weapon/gun/energy/net/mounted(src)
-	//src.modules += new /obj/item/weapon/gun/energy/mountedcannon(src)
-	//src.modules += new /obj/item/weapon/melee/energy/glaive(src)
 	src.modules += new /obj/item/weapon/tool/crowbar/robotic(src)
 	src.modules += new /obj/item/weapon/tool/wrench/robotic(src)
 	src.modules += new /obj/item/weapon/tool/screwdriver/robotic(src)

@@ -15,8 +15,9 @@
 	)
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	flash_protection = FLASH_PROTECTION_MAJOR
-
 	light_overlay = "helmet_light"
+	spawn_blacklisted = TRUE
+	spawn_frequency = 0
 
 /obj/item/clothing/suit/space/void
 	name = "voidsuit"
@@ -39,8 +40,8 @@
 	resilience = 0.09
 	can_breach = 1
 	spawn_tags = SPAWN_TAG_VOID_SUIT
-	rarity_value = 5
-	spawn_frequency = 10
+	rarity_value = 10
+	spawn_frequency = 8
 	spawn_blacklisted = FALSE
 	accompanying_object = /obj/item/clothing/shoes/magboots
 

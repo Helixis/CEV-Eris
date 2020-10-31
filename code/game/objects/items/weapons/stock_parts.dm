@@ -5,7 +5,7 @@
 	icon = 'icons/obj/stock_parts.dmi'
 	w_class = ITEM_SIZE_SMALL
 	rarity_value = 10
-	bad_types = /obj/item/weapon/stock_parts
+	bad_type = /obj/item/weapon/stock_parts
 	spawn_tags = SPAWN_TAG_STOCK_PARTS
 	var/rating = 1
 
@@ -312,11 +312,10 @@
 	matter = list(MATERIAL_PLASTIC = 3, MATERIAL_GLASS = 1)
 	spawn_blacklisted = TRUE
 
-
 // Subspace stock parts
 /obj/item/weapon/stock_parts/subspace
 	rarity_value = 7.14
-	bad_types = /obj/item/weapon/stock_parts/subspace
+	bad_type = /obj/item/weapon/stock_parts/subspace
 
 /obj/item/weapon/stock_parts/subspace/ansible
 	name = "subspace ansible"

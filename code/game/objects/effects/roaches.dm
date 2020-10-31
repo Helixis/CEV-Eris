@@ -37,6 +37,7 @@
 	desc = "A cockroach egg. It seems to pulse slightly with an inner life."
 	icon_state = "roach_egg"
 	var/amount_grown = 0
+	var/generation = 0 //This variable determinates how many ancestors has had a roach
 
 /obj/effect/roach/roach_egg/New(var/location, var/atom/parent)
 	pixel_x = rand(3,-3)
@@ -66,7 +67,8 @@
 			src.loc = O.owner ? O.owner.loc : O.loc
 
 		var/spawn_type = /mob/living/carbon/superior_animal/roach/roachling
-		new spawn_type(src.loc, src)
+		var/mob/living/carbon/superior_animal/roach/roachling/R = new spawn_type(src.loc, src)
+		R.generation = generation
 		qdel(src)
 
 /obj/effect/decal/cleanable/roach_egg_remains

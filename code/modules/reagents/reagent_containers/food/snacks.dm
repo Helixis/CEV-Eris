@@ -1,11 +1,16 @@
 //Food items that are eaten normally and don't leave anything behind.
+/obj/item/weapon/reagent_containers/food
+	bad_type = /obj/item/weapon/reagent_containers/food
+
 /obj/item/weapon/reagent_containers/food/snacks
 	name = "snack"
 	desc = "yummy"
 	icon = 'icons/obj/food.dmi'
-	icon_state
+	icon_state = null
 	center_of_mass = list("x"=16, "y"=16)
 	w_class = ITEM_SIZE_SMALL
+	spawn_tags = SPAWN_TAG_COOKED_FOOD
+	bad_type = /obj/item/weapon/reagent_containers/food/snacks
 	var/bitesize = 1
 	var/bitecount = 0
 	var/trash
@@ -207,7 +212,7 @@
 	if(junk_food)
 		to_chat(user, SPAN_WARNING("\The [src] its a junk food!"))
 	else if(taste_tag.len)
-		to_chat(user, SPAN_NOTICE("\The [src] this tastes like [english_list(taste_tag)]"))
+		to_chat(user, SPAN_NOTICE("\The [src] tastes like [english_list(taste_tag)]"))
 	if (bitecount==0)
 		return
 	else if (bitecount==1)
@@ -299,7 +304,7 @@
 /// FOOD END
 ////////////////////////////////////////////////////////////////////////////////
 /obj/item/weapon/reagent_containers/food/snacks/attack_generic(var/mob/living/user)
-	if(!isanimal(user) && !isalien(user))
+	if(!isanimal(user))
 		return
 
 	var/amount_eaten = bitesize
@@ -2869,7 +2874,7 @@
 	filling_color = "#BAA14C"
 	taste_tag = list(CHEESE_FOOD)
 	spawn_tags = SPAWN_TAG_PIZZA
-	bad_types = /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza
+	bad_type = /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita
 	name = "Margherita"
@@ -3309,7 +3314,7 @@
 	taste_tag = list(BLAND_FOOD)
 
 // potato + knife = raw sticks
-/obj/item/weapon/reagent_containers/food/snacks/grown/potato/attackby(obj/item/I, mob/user)
+/obj/item/weapon/reagent_containers/food/snacks/grown/potato/attackby(obj/item/I, mob/user) //this is obsolete??
 	if(QUALITY_CUTTING in I.tool_qualities)
 		if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_CUTTING, FAILCHANCE_ZERO, required_stat = STAT_BIO))
 			new /obj/item/weapon/reagent_containers/food/snacks/rawsticks(src)

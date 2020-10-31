@@ -11,7 +11,7 @@
 	var/heal_burn = 0
 	price_tag = 10
 	spawn_tags = SPAWN_TAG_MEDICINE
-	bad_types = /obj/item/stack/medical
+	bad_type = /obj/item/stack/medical
 	matter = list(MATERIAL_BIOMATTER = 5)
 	var/automatic_charge_overlays = FALSE	//Do we handle overlays with base update_icon()? | Stolen from TG egun code
 	var/charge_sections = 5		// How many indicator blips are there?
@@ -267,6 +267,9 @@
 					return
 			else
 				to_chat(user, SPAN_NOTICE("The [affecting.name] is cut open, you'll need more than a [src]!"))
+
+/obj/item/stack/medical/advanced
+	bad_type = /obj/item/stack/medical/advanced
 
 /obj/item/stack/medical/advanced/bruise_pack
 	name = "advanced trauma kit"

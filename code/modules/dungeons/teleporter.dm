@@ -20,7 +20,7 @@
 		/mob/living/simple_animal/hostile/viscerator)//duplicates to rig chances towards spawning more weaker enemies, but in favour of generally spawning more enemies
 	var/turfs_around = list()
 	var/victims_to_teleport = list()
-	var/obj/crawler/spawnpoint/target = null
+	var/obj/crawler/spawnpoint/target
 	anchored = TRUE
 	unacidable = 1
 	density = TRUE
@@ -29,7 +29,7 @@
 	for(var/turf/T in orange(7, src))
 		turfs_around += T
 
-/obj/rogue/teleporter/attack_hand(var/mob/user as mob)
+/obj/rogue/teleporter/attack_hand(mob/user)
 	if(!charge)
 		target = locate(/obj/crawler/spawnpoint)
 		if(target)
@@ -118,7 +118,7 @@
 	for(var/mob/living/M in victims_to_teleport)
 		M.forceMove(get_turf(target))
 
-	new /obj/structure/scrap/science/large(src.loc)
+	new /obj/structure/scrap_spawner/science/large(src.loc)
 
 	sleep(2)
 	var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()

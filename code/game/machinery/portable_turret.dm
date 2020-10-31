@@ -96,7 +96,8 @@
 	spark_system = new /datum/effect/effect/system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
-
+	var/area/A = get_area(src)
+	SEND_SIGNAL(A, COMSIG_TURRENT, src)
 	setup()
 
 /obj/machinery/porta_turret/crescent/New()
@@ -599,7 +600,7 @@ var/list/turret_icons
 	if(isanimal(L) || issmall(L)) // Animals are not so dangerous
 		return check_anomalies ? TURRET_SECONDARY_TARGET : TURRET_NOT_TARGET
 
-	if(isxenomorph(L) || isalien(L) || isblitzshell(L)) // Xenos are dangerous
+	if(isblitzshell(L)) // Blitzshells are dangerous
 		return check_anomalies ? TURRET_PRIORITY_TARGET	: TURRET_NOT_TARGET
 
 	if(ishuman(L))	//if the target is a human, analyze threat level

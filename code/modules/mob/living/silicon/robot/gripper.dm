@@ -5,6 +5,7 @@
 	desc = "A simple grasping tool specialized in construction and engineering work."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gripper"
+	spawn_blacklisted = TRUE
 
 	flags = NOBLUDGEON
 
@@ -25,9 +26,9 @@
 		/obj/item/stack/tile //Repair floors yay
 		)
 
-	var/obj/item/wrapped = null // Item currently being held.
+	var/obj/item/wrapped // Item currently being held.
 
-	var/force_holder = null //
+	var/force_holder //
 	var/justdropped = 0//When set to 1, the gripper has just dropped its item, and should not attempt to trigger anything
 
 /obj/item/weapon/gripper/examine(var/mob/user)
@@ -55,7 +56,7 @@
 
 
 
-/obj/item/weapon/gripper/proc/grip_item(obj/item/I as obj, mob/user as mob, var/feedback = 1)
+/obj/item/weapon/gripper/proc/grip_item(obj/item/I, mob/user, var/feedback = 1)
 	//This function returns 1 if we successfully took the item, or 0 if it was invalid. This information is useful to the caller
 	if (!wrapped)
 		if(is_type_in_list(I,can_hold))

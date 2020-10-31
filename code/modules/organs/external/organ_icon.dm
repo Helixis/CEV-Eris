@@ -110,6 +110,11 @@ var/global/list/limb_icon_cache = list()
 				var/icon/hair = new/icon(hair_style.icon, hair_style.icon_state)
 				if(hair_style.do_colouration)
 					hair.Blend(hair_col, ICON_ADD)
+				if(hair_style.secondary_theme)//hispania para accesorios en el peinado
+					var/icon/hair_secondary_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_[hair_style.secondary_theme]")
+					if(!hair_style.no_sec_colour)
+						hair_secondary_s.Blend(hair_col, ICON_ADD)
+					hair.Blend(hair_secondary_s, ICON_OVERLAY)//fin hispania
 				overlays |= hair
 
 	return mob_icon
