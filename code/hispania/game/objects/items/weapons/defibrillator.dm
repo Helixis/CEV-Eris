@@ -5,7 +5,7 @@
 /obj/item/weapon/defibrillator
 	name = "Defibrillator"
 	desc = "A device that delivers powerful shocks via detachable paddles to resuscitate incapacitated patients."
-	icon = 'icons/obj/defibrillator.dmi'
+	icon = 'icons/hispania/obj/defibrillator.dmi'
 	icon_state = "defibunit"
 	icon_state = "defibunit"
 	force = 5
