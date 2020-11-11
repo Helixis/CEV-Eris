@@ -198,8 +198,10 @@
 		return
 	//placed on chest and short delay to shock for dramatic effect, revive time is 5sec total
 
+	busy = TRUE
 	if(!do_after(user, chargetime, H))
 		return
+		busy = FALSE
 
 	//deduct charge here, in case the base unit was EMPed or something during the delay time
 	if(!checked_use(chargecost))
