@@ -2,6 +2,7 @@
 	set invisibility = 0
 	set background = BACKGROUND_ENABLED
 
+	. = FALSE
 	..()
 	if(config.enable_mob_sleep)
 		if(life_cycles_before_scan > 0)
@@ -41,7 +42,7 @@
 			//Random events (vomiting etc)
 			handle_random_events()
 
-			. = 1
+			. = TRUE
 
 		//Handle temperature/pressure differences between body and environment
 		if(environment)
@@ -58,7 +59,7 @@
 		for(var/obj/item/weapon/grab/G in src)
 			G.Process()
 
-		blinded = 0 // Placing this here just show how out of place it is.
+		blinded = FALSE // Placing this here just show how out of place it is.
 		// human/handle_regular_status_updates() needs a cleanup, as blindness should be handled in handle_disabilities()
 		if(handle_regular_status_updates()) // Status & health update, are we dead or alive etc.
 			handle_disabilities() // eye, ear, brain damages
