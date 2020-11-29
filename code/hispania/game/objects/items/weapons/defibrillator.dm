@@ -140,9 +140,9 @@
 	return TRUE
 
 /obj/item/weapon/defibrillator/proc/check_blood_level(mob/living/carbon/human/H)
-	if(!H.should_have_organ(BP_HEART))
+	if(!H.should_have_process(OP_HEART))
 		return FALSE
-	var/obj/item/organ/internal/heart/heart = H.internal_organs_by_name[BP_HEART]
+	var/obj/item/organ/internal/heart/heart = H.random_organ_by_process(OP_HEART)
 	if(!heart || H.get_blood_volume() < BLOOD_VOLUME_SURVIVE)
 		return TRUE
 	return FALSE
@@ -264,10 +264,10 @@
 	var/burn_damage = H.electrocute_act(burn_damage_amt*2, src, def_zone = target_zone)
 	if(burn_damage > 15 && !(H.species.flags & NO_PAIN))
 		H.emote("scream")
-	var/obj/item/organ/internal/heart/doki = LAZYACCESS(affecting.internal_organs, BP_HEART)
-	if(istype(doki) && doki.pulse && !doki.open && prob(10))
+	var/obj/item/organ/internal/heart/doki = LAZYACCESS(affecting.internal_organs, OP_HEART)
+	if(istype(doki) && H.pulse && !doki.open && prob(10))
 		to_chat(doki, SPAN_DANGER("Your [doki] has stopped!"))
-		doki.pulse = PULSE_NONE
+		H.pulse = PULSE_NONE
 
 	admin_attack_log(user, H, "Electrocuted using \a [src]", "Was electrocuted with \a [src]", "used \a [src] to electrocute")
 
@@ -297,9 +297,9 @@
 obj/item/weapon/defibrillator/proc/apply_brain_damage(mob/living/carbon/human/H, deadtime)
 	if(deadtime < DEFIB_TIME_LOSS) return
 
-	if(!H.should_have_organ(BP_BRAIN)) return //no brain
+	if(!H.should_have_process(BP_BRAIN)) return //no brain
 
-	var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[BP_BRAIN]
+	var/obj/item/organ/internal/brain/brain = H.random_organ_by_process(BP_BRAIN)
 	if(!brain) return //no brain
 
 	var/brain_damage = CLAMP((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
