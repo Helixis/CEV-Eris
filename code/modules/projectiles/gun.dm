@@ -23,6 +23,7 @@
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
 	hud_actions = list()
+	bad_type = /obj/item/weapon/gun
 	spawn_tags = SPAWN_TAG_GUN
 	rarity_value = 10
 	spawn_frequency = 10
@@ -66,7 +67,7 @@
 
 	var/icon_contained = TRUE
 	var/static/list/item_icons_cache = list()
-	var/wielded_item_state = null
+	var/wielded_item_state
 	var/one_hand_penalty = 0 //The higher this number is, the more severe the accuracy penalty for shooting it one handed. 5 is a good baseline for this, but var edit it live and play with it yourself.
 
 	var/projectile_color //Set by a firemode. Sets the fired projectiles color
@@ -225,11 +226,11 @@
 	if(ishuman(user) && user.a_intent == "harm")
 		var/mob/living/carbon/human/H = user
 
-		if(H.r_hand == src && istype(H.l_hand, /obj/item/weapon/gun))
+		if(H.r_hand == src && isgun(H.l_hand))
 			off_hand = H.l_hand
 			dual_wielding = TRUE
 
-		else if(H.l_hand == src && istype(H.r_hand, /obj/item/weapon/gun))
+		else if(H.l_hand == src && isgun(H.r_hand))
 			off_hand = H.r_hand
 			dual_wielding = TRUE
 		else
@@ -526,11 +527,11 @@
 			action = new /obj/screen/item_action/top_bar/gun/scope
 			action.owner = src
 			hud_actions += action
-			if(istype(src.loc, /mob))
+			if(ismob(src.loc))
 				var/mob/user = src.loc
 				user.client.screen += action
 	else
-		if(istype(src.loc, /mob))
+		if(ismob(src.loc))
 			var/mob/user = src.loc
 			user.client.screen -= action
 		hud_actions -= action

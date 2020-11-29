@@ -26,8 +26,6 @@
 
 #define iscarbon(A) istype(A, /mob/living/carbon)
 
-#define isalien(A) istype(A, /mob/living/carbon/alien)
-
 #define isslime(A) istype(A, /mob/living/carbon/slime)
 
 #define isbrain(A) istype(A, /mob/living/carbon/brain)
@@ -38,6 +36,7 @@
 //Human sub-species
 #define ishumanrace(A) is_species(A, /datum/species/human)
 #define iskidan(A) is_species(A, /datum/species/kidan)
+#define iskrell(A) is_species(A, /datum/species/skrell)
 //fin hispania
 
 //---------------------------------------------------
@@ -81,3 +80,7 @@
 #define istool(A) istype(A, /obj/item/weapon/tool)
 
 #define isCoil(A) istype(A, /obj/item/stack/cable_coil)
+
+#define isstructure(A) (istype(A, /obj/structure))
+
+#define ismachinery(A) (istype(A, /obj/machinery))

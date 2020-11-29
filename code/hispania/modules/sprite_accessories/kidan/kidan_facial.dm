@@ -1,7 +1,6 @@
 /datum/sprite_accessory/hair/kidan
 	icon = 'icons/hispania/mob/human_races/species/kidan/kidan_facial.dmi'
 	species_allowed = list(SPECIES_KIDAN)
-	do_colouration = TRUE
 
 /datum/sprite_accessory/hair/kidan/perked_antennae
 	name = "Perked-up Antennae"

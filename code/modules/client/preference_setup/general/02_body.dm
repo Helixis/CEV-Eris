@@ -85,9 +85,9 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	user << browse_rsc(pref.preview_icon, "previewicon.png")
 
 	var/datum/species/mob_species = all_species[pref.species]
-	. += "<b>Species:</b> <a href='?src=\ref[src];set_species=1'>[mob_species.name]</a><br>"
 	. += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
 	. += "<hr>"
+	. += "<b>Species:</b> <a href='?src=\ref[src];set_species=1'>[mob_species.name]</a><br>"
 	. += "<table><tr style='vertical-align:top; width: 100%'><td width=65%><b>Body</b> "
 	. += "(<a href='?src=\ref[src];random=1'>&reg;</A>)"
 	. += "<br>"
@@ -109,8 +109,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	mob_species = all_species[pref.species]
 	. += "<br><b>Facial:</b><br>"
 	. += " Style: <a href='?src=\ref[src];cycle_facial_hair=right'>&lt;&lt;</a><a href='?src=\ref[src];cycle_facial_hair=left'>&gt;&gt;</a><a href='?src=\ref[src];facial_style=1'>[pref.f_style]</a>"
-	if(has_flag(mob_species, HAS_FACIAL_COLOR))
-		. += "<a href='?src=\ref[src];facial_color=1'><span class='color_holder_box' style='background-color:[pref.facial_color]'></span></a><br>"
+	. += "<a href='?src=\ref[src];facial_color=1'><span class='color_holder_box' style='background-color:[pref.facial_color]'></span></a><br>"
 
 	if(has_flag(mob_species, HAS_EYE_COLOR))
 		. += "<br><b>Eyes: </b>"
@@ -199,7 +198,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			//pref.skills_allocated = pref.sanitize_skills(pref.skills_allocated)
 
 			//pref.cultural_info = mob_species.default_cultural_info.Copy()
-
+			pref.randomize_appearance_and_body_for()
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["hair_color"])
@@ -221,10 +220,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["facial_color"])
 		mob_species = all_species[pref.species]
-		if(!has_flag(mob_species, HAS_FACIAL_COLOR))
+		if(!has_flag(mob_species, HAS_HAIR_COLOR))
 			return TOPIC_NOACTION
 		var/new_facial = input(user, "Choose your character's facial-hair colour:", CHARACTER_PREFERENCE_INPUT_TITLE, pref.facial_color) as color|null
-		if(new_facial && has_flag(all_species[pref.species], HAS_FACIAL_COLOR) && CanUseTopic(user))
+		if(new_facial && has_flag(all_species[pref.species], HAS_HAIR_COLOR) && CanUseTopic(user))
 			pref.facial_color = new_facial
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 

@@ -186,7 +186,7 @@ var/global/ManifestJSON
 		G.fields["age"]			= H.age
 		G.fields["fingerprint"]	= md5(H.dna.uni_identity)
 		if(H.mind.initial_account)
-			G.fields["pay_account"]	= H.mind.initial_account.account_number
+			G.fields["pay_account"]	= H.mind.initial_account.account_number ? H.mind.initial_account.account_number : "N/A"
 		G.fields["email"]		= H.mind.initial_email_login["login"]
 		G.fields["p_stat"]		= "Active"
 		G.fields["m_stat"]		= "Stable"
@@ -240,6 +240,12 @@ var/global/ManifestJSON
 	if(hair_style)
 		temp = new/icon(hair_style.icon, hair_style.icon_state)
 		temp.Blend(H.hair_color, ICON_ADD)
+
+		if(hair_style.secondary_theme)
+			var/icon/hair_secondary_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_[hair_style.secondary_theme]")
+			if(!hair_style.no_sec_colour)
+				hair_secondary_s.Blend(H.hair_color, ICON_ADD)
+			temp.Blend(hair_secondary_s, ICON_OVERLAY)
 
 	hair_style = GLOB.facial_hair_styles_list[H.h_style]
 	if(hair_style)

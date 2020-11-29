@@ -24,4 +24,6 @@
 	var/gender = NEUTER                            // Restricted to specific genders.
 	var/list/species_allowed = list(SPECIES_HUMAN) // Restrict some styles to specific species
 	var/do_colouration = 1                         // Whether or not the accessory can be affected by colouration
+	var/secondary_theme
+	var/no_sec_colour = FALSE //If TRUE, prohibit the colouration of the secondary theme.
 	var/blend = ICON_ADD

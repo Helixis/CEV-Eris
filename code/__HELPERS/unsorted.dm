@@ -459,8 +459,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		moblist.Add(M)
 	for(var/mob/living/carbon/brain/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/carbon/alien/M in sortmob)
-		moblist.Add(M)
 	for(var/mob/observer/ghost/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/new_player/M in sortmob)
@@ -685,7 +683,7 @@ proc/GaussRandRound(var/sigma, var/roundto)
 	return "[displayed_x]:[displayed_y]:[displayed_z][displayed_area]"
 
 
-/area/proc/move_contents_to(var/area/A, var/turftoleave=null, var/direction)
+/area/proc/move_contents_to(var/area/A, var/turftoleave, var/direction)
 	//Takes: Area. Optional: turf type to leave behind.
 	//Returns: Nothing.
 	//Notes: Attempts to move the contents of one area to another area.
@@ -937,7 +935,7 @@ proc/DuplicateObject(obj/original, perfectcopy = 0 , sameloc = 0)
 
 					for(var/mob/M in T)
 
-						if(!istype(M,/mob) || isEye(M)) continue // If we need to check for more mobs, I'll add a variable
+						if(!ismob(M) || isEye(M)) continue // If we need to check for more mobs, I'll add a variable
 						mobs += M
 
 					for(var/mob/M in mobs)
@@ -1051,7 +1049,7 @@ proc/is_hot(obj/item/W)
 	if(W.sharp) return TRUE
 	return ( \
 		W.sharp														|| \
-		istype(W, /obj/item/weapon/tool)							|| \
+		istool(W)													|| \
 		istype(W, /obj/item/weapon/pen)								|| \
 		istype(W, /obj/item/weapon/flame/lighter/zippo)				|| \
 		istype(W, /obj/item/weapon/flame/match)						|| \

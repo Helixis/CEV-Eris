@@ -1,9 +1,30 @@
+#define RANGE_BIOMES 7
+
+#define LOOT_LEVEL_VERY_LOW 4000
+
+#define LOOT_LEVEL_LOW 8000
+
+#define LOOT_LEVEL_ADVERAGE 12000
+
+#define LOOT_LEVEL_HIG 16000
+
+#define LOOT_LEVEL_VERY_HIG 20000
+
 //	Items
+#define SPAWN_OBJ "obj"
 #define SPAWN_ITEM "item"
 #define SPAWN_WEAPON "weapon"
 
 #define SPAWN_TAG_ITEM "obj,item"
 #define SPAWN_TAG_WEAPON "obj,item,weapon"
+
+#define SPAWN_RARE_ITEM "rare_item"
+
+#define SPAWN_TAG_RARE_ITEM "obj,item,rare_item"
+
+#define SPAWN_SPACECASH "spacecash"
+
+#define SPAWN_TAG_SPACECASH "obj,item,spacecash"
 
 //Items - tools
 #define SPAWN_TOOL "tool"
@@ -26,7 +47,7 @@
 // ITEMS - tools - SURGERY
 #define SPAWN_SURGERY_TOOL "surgery_tool"
 
-#define SPAWN_TAG_SURGERY_TOOL "obj,item,tool,surgery_tool"
+#define SPAWN_TAG_SURGERY_TOOL "obj,item,tool,surgery_tool,medical"
 
 //	Items - upgrades
 #define SPAWN_TOOL_UPGRADE "tool_upgrade"
@@ -35,7 +56,13 @@
 
 #define SPAWN_TAG_TOOL_UPGRADE "obj,item,tool_upgrade"
 #define SPAWN_TAG_RARE_TOOL_UPGRADE "obj,item,tool_upgrade,rare_tool_upgrade"
+#define SPAWN_TAG_RARE_TOOL_UPGRADE_OS "obj,item,tool_upgrade,rare_tool_upgrade,item_tech_os,onestar"
 #define SPAWN_TAG_GUN_UPGRADE "obj,item,gun_upgrade"
+
+//items - one star
+#define SPAWN_ITEM_TECH_OS "item_tech_os"
+
+#define SPAWN_TAG_ITEM_TECH_OS "obj,item,item_tech_os,onestar"
 
 // ITEMS - organ- PROSTHESIS
 #define SPAWN_OS_PROSTHETIC "prosthetic_os"
@@ -76,6 +103,7 @@
 #define SPAWN_MATERIAL_RESOURCES_RARE "material_resources_rare"
 #define SPAWN_MATERIAL_BUILDING "bulding_material"
 #define SPAWN_MATERIAL_BUILDING_ROD "rod"
+#define SPAWN_MATERIAL_JUNK "material_junk"
 
 #define SPAWN_TAG_MATERIAL "obj,item,material"
 #define SPAWN_TAG_ORE "obj,item,material,ore"
@@ -83,8 +111,17 @@
 #define SPAWN_TAG_MATERIAL_RESOURCES_RARE "obj,item,material,material_resources,material_resources_rare"
 #define SPAWN_TAG_MATERIAL_RESOURCES_BULDING "obj,item,material,bulding_material,material_resources"
 #define SPAWN_TAG_MATERIAL_BUILDING "obj,item,material,bulding_material"
-#define SPAWN_TAG_MATERIAL_BUILDING_ROD "obj,item,bulding_material,rod,junk"
-#define SPAWN_TAG_ORE_TAG_JUNK "obj,item,material,ore,junk"
+#define SPAWN_TAG_MATERIAL_BUILDING_ROD "obj,item,bulding_material,rod,material_junk,junk"
+#define SPAWN_TAG_ORE_TAG_JUNK "obj,item,material,ore,material_junk,junk"
+#define SPAWN_TAG_MATERIAL_JUNK "obj,item,bulding_material,material_junk,junk"
+
+// FOSSIL
+#define SPAWN_XENOARCH "xenoarcheology"
+#define SPAWN_FOSSIL "fossil"
+
+#define SPAWN_TAG_XENOARCH_ITEM "obj,item,xenoarch"
+#define SPAWN_TAG_XENOARCH_ITEM_FOSSIL "obj,item,fossil,xenoarch"
+#define SPAWN_TAG_GUN_ENERGY_XENOARCH "obj,item,gun,gun_energy,xenoarch"
 
 //  MINES
 #define SPAWN_MINE "mine"
@@ -149,8 +186,10 @@
 #define SPAWN_TOY "toy"
 #define SPAWN_PLUSHIE "toy_plushie"
 #define SPAWN_FIGURE "toy_figure"
+#define SPAWN_TOY_WEAPON "weapon_toy"
 
 #define SPAWN_TAG_TOY "obj,item,toy"
+#define SPAWN_TAG_TOY_WEAPON "obj,item,toy,weapon_toy"
 #define SPAWN_TAG_PLUSHIE "obj,item,toy,toy_plushie"
 #define SPAWN_TAG_STRUCTURE_PLUSHIE "obj,structure,toy_plushie"
 #define SPAWN_TAG_FIGURE "obj,item,toy,toy_figure"
@@ -220,7 +259,6 @@
 
 // ITEM - STOCK PARTS   and os_tech
 #define SPAWN_STOCK_PARTS "stock_parts"
-#define SPAWN_ITEM_TECH_OS "item_tech_os"
 
 #define SPAWN_TAG_STOCK_PARTS "obj,item,stock_parts"
 #define SPAWN_TAG_STOCK_PARTS_TIER_2 "obj,item,stock_parts,science"
@@ -283,15 +321,17 @@
 #define SPAWN_TAG_BOOZE "obj,item,drink,bottle_drink,bottle_alcohol"
 #define SPAWN_TAG_DRINK_SODA "obj,item,drink,bottle_drink,cans"
 
-// item -snaks
+// item -snacks
 #define SPAWN_JUNKFOOD "junkfood"
 #define SPAWN_PIZZA "pizza"
 #define SPAWN_RATIONS "rations"
+#define SPAWN_COOKED_FOOD "cooked_food"
 
-#define SPAWN_TAG_RATIONS "obj,item,snaks,rations"
-#define SPAWN_TAG_JUNKFOOD "obj,item,snaks,junkfood"
-#define SPAWN_TAG_JUNKFOOD_RATIONS "obj,item,snaks,junkfood,rations"
-#define SPAWN_TAG_PIZZA "obj,item,snaks,pizza"
+#define SPAWN_TAG_RATIONS "obj,item,snacks,rations"
+#define SPAWN_TAG_JUNKFOOD "obj,item,snacks,junkfood"
+#define SPAWN_TAG_JUNKFOOD_RATIONS "obj,item,snacks,junkfood,rations"
+#define SPAWN_TAG_PIZZA "obj,item,snacks,pizza"
+#define SPAWN_TAG_COOKED_FOOD "obj,item,snacks,cooked_food"
 
 // ITEM - GRENADES
 #define SPAWN_TAG_GRENADE "obj,item,grenade"
@@ -308,6 +348,8 @@
 
 //	MACHINERY
 #define SPAWN_MACHINERY "machinery"
+
+#define SPAWN_TAG_MACHINERY "obj,machinery"
 
 //	Structures
 #define SPAWN_STRUCTURE "structure"
@@ -327,6 +369,7 @@
 #define SPAWN_CLOSET_SECURE "secure_closet"//secure
 
 #define SPAWN_TAG_CLOSET "obj,structure,closet"
+#define SPAWN_TAG_CLOSET_OS "obj,structure,closet,onestar"
 #define SPAWN_TAG_CLOSET_SECURE "obj,structure,closet,secure_closet"//secure
 #define SPAWN_TAG_TECHNICAL_CLOSET "obj,structure,closet,technical_closet"
 #define SPAWN_TAG_WARDROBE "obj,structure,closet,wardrobe"
@@ -435,3 +478,11 @@
 #define SPAWN_TAG_SPAWNER_SCRAP "spawner,spawner_scrap"
 #define SPAWN_TAG_SPAWNER_LARGE_SCRAP "spawner,spawner_scrap,spawner_large_scrap"
 
+// FACTION KEYWORDS
+#define SPAWN_ASTERS "asters"
+#define SPAWN_FROZEN_STAR "frozen_star"
+#define SPAWN_IRONHAMMER "ironhammer"
+#define SPAWN_NANOTRASEN "nanotrasen"
+#define SPAWN_NEOTHEOLOGY "neotheology"
+#define SPAWN_MOEBIUS "moebius"
+#define SPAWN_SERBIAN "serbian"

@@ -21,7 +21,8 @@
 #define HAS_UNDERWEAR     0x8    // Underwear is drawn onto the mob icon.
 #define HAS_EYE_COLOR     0x10   // Eye colour selectable in chargen. (RGB)
 #define HAS_HAIR_COLOR    0x20   // Hair colour selectable in chargen. (RGB)
-#define HAS_FACIAL_COLOR  0x40   // Facial Hair colour selectable in chargen. (RGB) //hispania
+#define HAS_HAIR_MIMETISATION 0x40 //para que el cabello tenga el mismo color que la piel
+#define HAS_FACIAL_MIMETISATION 0x80 //para que el vello tenga el mismo color que la piel
 
 // Languages.
 #define LANGUAGE_COMMON "English Common"
@@ -34,13 +35,13 @@
 #define LANGUAGE_DRONE "Drone Talk"
 #define LANGUAGE_MONKEY "Chimpanzee"
 
-#define LANGUAGE_XENOMORPH "Xenomorph"
 #define LANGUAGE_HIVEMIND "Hivemind"
 #define LANGUAGE_CORTICAL "Cortical Link"
 #define LANGUAGE_CULT "Cult"
 #define LANGUAGE_OCCULT "Occult"
 #define LANGUAGE_BLITZ "Blitzshell Communique"
 #define LANGUAGE_KIDAN "Chittin" //hispania
+#define LANGUAGE_SKRELL "Skrellian"//hispania
 
 // Language flags.
 #define WHITELISTED  1   // Language is available if the speaker is whitelisted.

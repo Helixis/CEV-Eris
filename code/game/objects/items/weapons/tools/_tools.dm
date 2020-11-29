@@ -15,7 +15,8 @@
 	w_class = ITEM_SIZE_SMALL
 
 	//spawn values
-	bad_types = /obj/item/weapon/tool
+	bad_type = /obj/item/weapon/tool
+	spawn_tags = SPAWN_TAG_TOOL
 
 	var/tool_in_use = FALSE
 
@@ -486,7 +487,7 @@
 //Critical failure rolls. If you use use_tool_extended, you might want to call that proc as well.
 /obj/item/proc/handle_failure(mob/living/user, atom/target, required_stat, required_quality)
 	var/obj/item/weapon/tool/T
-	if(istype(src, /obj/item/weapon/tool))
+	if(istool(src))
 		T = src
 
 	var/crit_fail_chance = 25
@@ -653,12 +654,12 @@
 
 	var/list/L = required_qualities & tool_qualities
 
-	if(L.len > 1)
+	if(L.len)
+		if(L.len == 1)
+			return L[1]
 		for(var/i in L)
 			L[i] = image(icon = 'icons/mob/radial/tools.dmi', icon_state = i)
 		return show_radial_menu(user, use_on ? use_on : user, L, tooltips = TRUE, require_near = TRUE, custom_check = CB)
-	else
-		return L[1]
 
 /obj/item/weapon/tool/proc/turn_on(mob/user)
 	if(use_power_cost)
@@ -959,17 +960,6 @@
 			if(E.damage > 10)
 				to_chat(user, SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!"))
 
-			if (E.damage >= E.min_broken_damage)
-				to_chat(H, SPAN_DANGER("You go blind!"))
-				H.sdisabilities |= BLIND
-			else if (E.damage >= E.min_bruised_damage)
-				to_chat(H, SPAN_DANGER("You go blind!"))
-				H.eye_blind = 5
-				H.eye_blurry = 5
-				H.disabilities |= NEARSIGHTED
-				spawn(100)
-					H.disabilities &= ~NEARSIGHTED
-
 
 /obj/item/weapon/tool/attack(mob/living/M, mob/living/user, var/target_zone)
 	if(isBroken)
@@ -1043,6 +1033,7 @@
 	name = "Electric Boogaloo 3000"
 	icon_state = "omnitool"
 	item_state = "omnitool"
+	spawn_tags = null
 	tool_qualities = list(QUALITY_BOLT_TURNING = 100,
 							QUALITY_PRYING = 100,
 							QUALITY_WELDING = 100,
