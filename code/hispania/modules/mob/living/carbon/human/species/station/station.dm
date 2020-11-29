@@ -29,7 +29,7 @@
 	flesh_color = "#ba7814"
 	blood_color = "#FB9800"
 
-	has_organ = list(
+	has_process = list(
 		BP_HEART =    /obj/item/organ/internal/heart/kidan,
 		BP_LUNGS =    /obj/item/organ/internal/lungs/kidan,
 		BP_LIVER =    /obj/item/organ/internal/liver/kidan,
@@ -87,7 +87,7 @@
 	reagent_tag = IS_SKRELL
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 	genders = list(NEUTER)
-	has_organ = list(
+	has_process = list(
 		BP_HEART =    /obj/item/organ/internal/heart/skrell,
 		BP_LUNGS =    /obj/item/organ/internal/lungs/skrell,
 		BP_LIVER =    /obj/item/organ/internal/liver/skrell,
