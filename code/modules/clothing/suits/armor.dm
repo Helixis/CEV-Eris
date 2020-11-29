@@ -9,7 +9,7 @@
 	siemens_coefficient = 0.6
 	price_tag = 200
 	rarity_value = 20
-	style = 1
+	style = STYLE_LOW
 	bad_type = /obj/item/clothing/suit/armor
 	spawn_tags = SPAWN_TAG_CLOTHING_ARMOR
 
@@ -214,8 +214,9 @@
 		MATERIAL_PLASTEEL = 1,
 		MATERIAL_GLASS = 15 // reflective material, lots of it
 	)
+	//spawn_blacklisted = TRUE//antag_item_targets-crafteable?
 
-/obj/item/clothing/suit/armor/laserproof/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack") //TODO: Refactor this all into humandefense
+/obj/item/clothing/suit/armor/laserproof/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack") //TODO: Refactor this all into humandefense
 	if(istype(damage_source, /obj/item/projectile/energy) || istype(damage_source, /obj/item/projectile/beam))
 		var/obj/item/projectile/P = damage_source
 
@@ -279,7 +280,7 @@
 	equip_delay = 2 SECONDS
 	price_tag = 250
 	rarity_value = 25
-	style = 0
+	style = STYLE_NONE
 
 /obj/item/clothing/suit/armor/heavy/red
 	name = "Thunderdome suit (red)"
@@ -287,6 +288,7 @@
 	icon_state = "tdred"
 	item_state = "tdred"
 	siemens_coefficient = 1
+	spawn_frequency = 0//Thunderdome
 
 /obj/item/clothing/suit/armor/heavy/green
 	name = "Thunderdome suit (green)"
@@ -294,6 +296,7 @@
 	icon_state = "tdgreen"
 	item_state = "tdgreen"
 	siemens_coefficient = 1
+	spawn_frequency = 0//Thunderdome
 
 // Riot suit
 /obj/item/clothing/suit/armor/heavy/riot
@@ -323,14 +326,15 @@
  * Storage Types
  */
 /obj/item/clothing/suit/storage/vest
-	name = "webbed armor vest"
-	desc = "A synthetic armor vest. This one has added webbing and ballistic plates."
+	name = "webbed armor"
+	desc = "An armored vest used for day-to-day operations. This one has various pouches and straps attached."
 	icon_state = "webvest"
-	armor = list(
-		melee = 20,
+	price_tag = 250 //Normal vest is worth 200, this one is worth 250 because it also has storage space
+	armor = list( //Same stats as the standard vest only difference is that this one has storage
+		melee = 30,
 		bullet = 30,
-		energy = 20,
-		bomb = 25,
+		energy = 30,
+		bomb = 10,
 		bio = 0,
 		rad = 0
 	)
@@ -343,6 +347,7 @@
 	heat_protection = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
+	bad_type = /obj/item/clothing/suit/storage/vest
 
 //Provides the protection of a merc voidsuit, but only covers the chest/groin, and also takes up a suit slot. In exchange it has no slowdown and provides storage.
 /obj/item/clothing/suit/storage/vest/merc
@@ -391,7 +396,6 @@
 /obj/item/clothing/suit/armor/reactive
 	name = "reactive teleport armor"
 	desc = "Someone separated our Research Director's head from their body!"
-	var/active = FALSE
 	icon_state = "reactiveoff"
 	item_state = "reactiveoff"
 	blood_overlay_type = "armor"
@@ -403,32 +407,23 @@
 		bio = 0,
 		rad = 0
 	)
+	var/active = FALSE
+	var/entropy_value = 2
 
-/obj/item/clothing/suit/armor/reactive/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/clothing/suit/armor/reactive/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	if(prob(50))
 		user.visible_message(SPAN_DANGER("The reactive teleport system flings [user] clear of the attack!"))
-		var/list/turfs = new/list()
 		var/turf/TLoc = get_turf(user)
-		for(var/turf/T in trange(6, TLoc))
-			if(istype(T,/turf/space)) continue
-			if(T.density) continue
-			if(T.x>world.maxx-6 || T.x<6)	continue
-			if(T.y>world.maxy-6 || T.y<6)	continue
-			turfs += T
-		if(!turfs.len) turfs += pick(/turf in orange(6))
-		var/turf/picked = pick(turfs)
-		if(!isturf(picked)) return
-
+		var/turf/picked = get_random_secure_turf_in_range(src, 7, 1)
+		if(!picked) return
 		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
 		spark_system.start()
-		playsound(user.loc, "sparks", 50, 1)
-
-		user.loc = picked
+		go_to_bluespace(TLoc, entropy_value, TRUE, user, picked)
 		return PROJECTILE_FORCE_MISS
-	return 0
+	return FALSE
 
-/obj/item/clothing/suit/armor/reactive/attack_self(mob/user as mob)
+/obj/item/clothing/suit/armor/reactive/attack_self(mob/user)
 	src.active = !( src.active )
 	if (src.active)
 		to_chat(user, "\blue The reactive armor is now active.")
@@ -446,3 +441,21 @@
 	src.icon_state = "reactiveoff"
 	src.item_state = "reactiveoff"
 	..()
+
+/obj/item/clothing/suit/armor/crusader
+	name = "crusader armor"
+	desc = "God will protect those who belive."
+	icon_state = "crusader_suit"
+	item_state = "crusader_suit"
+	slowdown = 0.3
+	matter = list(MATERIAL_BIOMATTER = 25, MATERIAL_PLASTEEL = 10, MATERIAL_STEEL = 15, MATERIAL_GOLD = 2)
+	armor = list(
+		melee = 70,
+		bullet = 30,
+		energy = 30,
+		bomb = 30,
+		bio = 0,
+		rad = 0
+	)
+	unacidable = TRUE
+	spawn_blacklisted = TRUE
