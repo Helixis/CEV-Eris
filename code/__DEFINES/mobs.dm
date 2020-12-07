@@ -202,3 +202,4 @@
 //Mob attribute defaults.
 #define MARKING_TARGET_SKIN 0 // Draw a datum/sprite_accessory/marking to the mob's body, eg. tattoos
 #define MARKING_TARGET_HAIR 1 // Draw a datum/sprite_accessory/marking to the mob's hair, eg. ears & horns
+#define NECROZTIME 	(5 MINUTES)
