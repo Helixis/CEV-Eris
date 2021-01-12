@@ -1,5 +1,13 @@
 #include "hispania.dmm"
 
+/turf/simulated/wall/airless
+	oxygen = 0
+	nitrogen = 0
+
+/turf/simulated/wall/r_wall/airless
+	oxygen = 0
+	nitrogen = 0
+
 /obj/map_data/hispania
 	name = "Hispania Station"
 	is_player_level = TRUE
