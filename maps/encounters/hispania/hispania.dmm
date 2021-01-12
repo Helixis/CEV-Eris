@@ -925,7 +925,7 @@
 /turf/simulated/floor/grass,
 /area/space/hispania)
 "ace" = (
-/obj/structure/scrap,
+/obj/structure/scrap_spawner,
 /turf/space,
 /area/space)
 "acf" = (
@@ -1396,11 +1396,11 @@
 /turf/simulated/floor/airless,
 /area/space/hispania)
 "acW" = (
-/obj/structure/scrap/vehicle/large,
+/obj/structure/scrap_spawner/vehicle/large,
 /turf/space,
 /area/space)
 "acX" = (
-/obj/structure/scrap/vehicle/large,
+/obj/structure/scrap_spawner/vehicle/large,
 /turf/simulated/wall/r_wall/airless,
 /area/space/hispania)
 "acY" = (
@@ -1613,11 +1613,11 @@
 /turf/simulated/floor/grass,
 /area/space/hispania)
 "adr" = (
-/obj/structure/scrap/vehicle/large,
+/obj/structure/scrap_spawner/vehicle/large,
 /turf/simulated/floor/airless,
 /area/space/hispania)
 "ads" = (
-/obj/structure/scrap/vehicle/large,
+/obj/structure/scrap_spawner/vehicle/large,
 /turf/simulated/floor/reinforced/airless,
 /area/space/hispania)
 "adt" = (
@@ -1789,7 +1789,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/space/hispania)
 "adJ" = (
-/obj/structure/scrap/vehicle/large,
+/obj/structure/scrap_spawner/vehicle/large,
 /turf/space,
 /area/space/hispania)
 "adK" = (
@@ -1818,7 +1818,7 @@
 /turf/simulated/floor/grass,
 /area/space/hispania)
 "adM" = (
-/obj/structure/scrap,
+/obj/structure/scrap_spawner,
 /turf/simulated/floor/reinforced/airless,
 /area/space/hispania)
 "adN" = (
@@ -2044,7 +2044,7 @@
 /turf/simulated/floor/grass,
 /area/space/hispania)
 "aea" = (
-/obj/structure/scrap,
+/obj/structure/scrap_spawner,
 /turf/simulated/floor/airless,
 /area/space/hispania)
 "aeb" = (
