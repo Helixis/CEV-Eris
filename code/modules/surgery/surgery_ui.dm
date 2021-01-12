@@ -37,8 +37,11 @@
 	data["conditions"] = get_conditions()
 	data["diagnosed"] = diagnosed
 
-	if(owner && !cannot_amputate)
-		data["amputate_step"] = BP_IS_ROBOTIC(src) ? /datum/surgery_step/robotic/amputate : /datum/surgery_step/amputate
+	if(owner)
+		data["owner_oxyloss"] = owner.getOxyLoss()
+		data["owner_oxymax"] = 100 - owner.total_oxygen_req
+		if(!cannot_amputate)
+			data["amputate_step"] = BP_IS_ROBOTIC(src) ? /datum/surgery_step/robotic/amputate : /datum/surgery_step/amputate
 
 	data["insert_step"] = BP_IS_ROBOTIC(src) ? /datum/surgery_step/insert_item/robotic : /datum/surgery_step/insert_item
 
@@ -59,6 +62,10 @@
 		organ_data["max_damage"] = organ.max_damage
 		organ_data["status"] = organ.get_status_data()
 		organ_data["conditions"] = organ.get_conditions()
+		organ_data["stored_blood"] = organ.current_blood
+		organ_data["max_blood"] = organ.max_blood_storage
+		if(BP_BRAIN in organ.organ_efficiency)
+			organ_data["show_oxy"] = TRUE
 
 		var/list/processes = list()
 		for(var/efficiency in organ.organ_efficiency)
@@ -67,7 +74,7 @@
 					"title" = "[capitalize(efficiency)] efficiency",
 					"efficiency" = organ.organ_efficiency[efficiency],
 					)
-				) 
+				)
 		organ_data["processes"] = processes
 
 		var/list/actions_list = list()

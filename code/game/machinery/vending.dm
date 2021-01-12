@@ -1003,6 +1003,7 @@
 					/obj/item/weapon/gun/projectile/automatic/atreides = 3,
 					/obj/item/weapon/gun/projectile/shotgun/pump/gladstone = 3,
 					/obj/item/weapon/gun/projectile/shotgun/pump = 3,
+					/obj/item/weapon/gun/projectile/automatic/slaught_o_matic = 30,
 					/obj/item/ammo_magazine/pistol/rubber = 20,
 					/obj/item/ammo_magazine/hpistol/rubber = 5,
 					/obj/item/ammo_magazine/slpistol/rubber = 20,
@@ -1026,6 +1027,7 @@
 					/obj/item/weapon/tool/knife/tacknife = 5)
 
 	prices = list(
+					/obj/item/weapon/gun/projectile/automatic/slaught_o_matic = 90,
 					/obj/item/ammo_magazine/ammobox/pistol/rubber = 400,
 					/obj/item/ammo_magazine/ammobox/pistol/rubber = 500,
 					/obj/item/ammo_magazine/slpistol/rubber = 300,
@@ -1392,9 +1394,9 @@
 	icon_state = "teomat"
 	vendor_department = DEPARTMENT_CHURCH
 	products = list(/obj/item/weapon/book/ritual/cruciform = 10, /obj/item/weapon/storage/fancy/candle_box = 10, /obj/item/weapon/reagent_containers/food/drinks/bottle/ntcahors = 20)
-	contraband = list(/obj/item/weapon/implant/core_implant/cruciform = 3, /obj/item/weapon/computer_hardware/hard_drive/portable/design/nt_melee = 1, /obj/item/weapon/computer_hardware/hard_drive/portable/design/nt_grenades = 1)
+	contraband = list(/obj/item/weapon/implant/core_implant/cruciform = 3)
 	prices = list(/obj/item/weapon/book/ritual/cruciform = 500, /obj/item/weapon/storage/fancy/candle_box = 200, /obj/item/weapon/reagent_containers/food/drinks/bottle/ntcahors = 250,
-				/obj/item/weapon/implant/core_implant/cruciform = 1000, /obj/item/weapon/computer_hardware/hard_drive/portable/design/nt_melee = 1000, /obj/item/weapon/computer_hardware/hard_drive/portable/design/nt_grenades = 2000)
+				/obj/item/weapon/implant/core_implant/cruciform = 1000)
 
 /obj/machinery/vending/powermat
 	name = "Asters Guild Power-Mat"
