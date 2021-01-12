@@ -29,14 +29,14 @@
 	flesh_color = "#ba7814"
 	blood_color = "#FB9800"
 
-	has_organ = list(
-		BP_HEART =    /obj/item/organ/internal/heart/kidan,
-		BP_LUNGS =    /obj/item/organ/internal/lungs/kidan,
-		BP_LIVER =    /obj/item/organ/internal/liver/kidan,
-		BP_KIDNEYS =  /obj/item/organ/internal/kidneys/kidan,
+	has_process = list(
+		OP_HEART =    /obj/item/organ/internal/heart/kidan,
+		OP_LUNGS =    /obj/item/organ/internal/lungs/kidan,
+		OP_LIVER =    /obj/item/organ/internal/liver/kidan,
+		OP_KIDNEYS =  /obj/item/organ/internal/kidneys/kidan,
 		BP_BRAIN =    /obj/item/organ/internal/brain/kidan,
-		BP_APPENDIX = /obj/item/organ/internal/appendix,
-		BP_EYES =     /obj/item/organ/internal/eyes/kidan, //Default darksight of 2.
+		OP_APPENDIX = /obj/item/organ/internal/appendix,
+		OP_EYES =     /obj/item/organ/internal/eyes/kidan, //Default darksight of 2.
 		)
 
 /datum/species/kidan/get_bodytype()
@@ -87,14 +87,14 @@
 	reagent_tag = IS_SKRELL
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 	genders = list(NEUTER)
-	has_organ = list(
-		BP_HEART =    /obj/item/organ/internal/heart/skrell,
-		BP_LUNGS =    /obj/item/organ/internal/lungs/skrell,
-		BP_LIVER =    /obj/item/organ/internal/liver/skrell,
-		BP_KIDNEYS =  /obj/item/organ/internal/kidneys/skrell,
+	has_process = list(
+		OP_HEART =    /obj/item/organ/internal/heart/skrell,
+		OP_LUNGS =    /obj/item/organ/internal/lungs/skrell,
+		OP_LIVER =    /obj/item/organ/internal/liver/skrell,
+		OP_KIDNEYS =  /obj/item/organ/internal/kidneys/skrell,
 		BP_BRAIN =    /obj/item/organ/internal/brain/skrell,
-		BP_APPENDIX  = /obj/item/organ/internal/appendix,
-		BP_EYES  =     /obj/item/organ/internal/eyes/skrell, //Default darksight of 2.
+		OP_APPENDIX  = /obj/item/organ/internal/appendix,
+		OP_EYES  =     /obj/item/organ/internal/eyes/skrell, //Default darksight of 2.
 		)
 
 /datum/species/skrell/get_bodytype()

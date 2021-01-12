@@ -5,10 +5,17 @@
 	rarity = 4
 	var/obj/item/target
 
+/datum/individual_objective/bad_technology/can_assign(mob/living/L)
+	if(!..())
+		return FALSE
+	if(locate(/obj/item/weapon/tool/sword/nt_sword))
+		return pick_faction_item(L)
+	return FALSE
+
 /datum/individual_objective/bad_technology/assign()
 	..()
-	target = pick_faction_item(mind_holder)
-	desc = "\The [target] is clearly against NT doctrine. It must be destroyed by Sword of Truth."
+	target = pick_faction_item(mind_holder, strict_type = /obj)
+	desc = "\The [target] is clearly against NT doctrine. It must be destroyed by the Sword of Truth."
 	RegisterSignal(mind_holder, SWORD_OF_TRUTH_OF_DESTRUCTION, .proc/task_completed)
 
 /datum/individual_objective/bad_technology/task_completed(obj/item/I)
@@ -44,7 +51,7 @@
 			continue
 		valid_targets += H
 	target = pick(valid_targets)
-	desc = "[target] has the potential to be a great beliver hbut their path has gone astray. Convert them, even if force is required."
+	desc = "[target] has the potential to be a great beliver but their path has gone astray. Convert them, even if force is required."
 	RegisterSignal(target, COMSIG_HUMAN_INSTALL_IMPLANT, .proc/task_completed)
 
 /datum/individual_objective/convert/task_completed(mob/living/carbon/human/H, obj/item/weapon/implant)

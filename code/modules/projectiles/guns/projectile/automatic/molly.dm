@@ -7,7 +7,7 @@
 	icon_state = "molly"
 	item_state = "molly"
 	w_class = ITEM_SIZE_NORMAL
-	can_dual = 1
+	can_dual = TRUE
 	caliber = CAL_PISTOL
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
@@ -23,7 +23,7 @@
 
 	damage_multiplier = 0.7 //good for rubber takedowns or self-defence, not so good to kill someone, you might want to use better smg
 	gun_tags = list(GUN_SILENCABLE)
-	recoil_buildup = 3
+	recoil_buildup = 1
 	one_hand_penalty = 5 //despine it being handgun, it's better to hold in two hands while shooting. SMG level.
 
 	init_firemodes = list(
@@ -46,6 +46,9 @@
 	if (silenced)
 		iconstring += "_s"
 		itemstring += "_s"
+
+	if (wielded)
+		itemstring += "_doble"
 
 	icon_state = iconstring
 	set_item_state(itemstring)

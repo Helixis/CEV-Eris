@@ -29,7 +29,7 @@
 
 	//For SINGLE_CASING or SPEEDLOADER guns
 	var/max_shells = 0			//the number of casings that will fit inside
-	var/ammo_type = null		//the type of ammo that the gun comes preloaded with
+	var/ammo_type		//the type of ammo that the gun comes preloaded with
 	var/list/loaded = list()	//stored ammo
 
 	//For MAGAZINE guns
@@ -341,6 +341,24 @@
 	data["max_shells"] = get_max_ammo()
 
 	return data
+
+/obj/item/weapon/gun/projectile/get_dud_projectile()
+	var/proj_type
+	if(chambered)
+		proj_type = chambered.BB.type
+	else if(loaded.len)
+		var/obj/item/ammo_casing/A = loaded[1]
+		if(!A.BB)
+			return null
+		proj_type = A.BB.type
+	else if(ammo_magazine && ammo_magazine.stored_ammo.len)
+		var/obj/item/ammo_casing/A = ammo_magazine.stored_ammo[1]
+		if(!A.BB)
+			return null
+		proj_type = A.BB.type
+	if(!proj_type)
+		return null
+	return new proj_type
 
 /obj/item/weapon/gun/projectile/refresh_upgrades()
 	max_shells = initial(max_shells)

@@ -42,6 +42,7 @@
 	zoom_factor = 0
 	damage_multiplier = 1
 	charge_cost = 100
+	spawn_tags = null
 
 /obj/item/weapon/gun/energy/laser/practice
 	name = "NT LG \"Lightfall\" - P"
@@ -60,7 +61,7 @@
 	fire_sound = 'sound/weapons/Laser.ogg'
 	slot_flags = SLOT_BELT
 	w_class = ITEM_SIZE_NORMAL
-	can_dual = 1
+	can_dual = TRUE
 	matter = list(MATERIAL_STEEL = 12)
 	projectile_type = /obj/item/projectile/beam
 	fire_delay = 10 //old technology
@@ -86,7 +87,7 @@
 	fire_sound = 'sound/weapons/Laser.ogg'
 	slot_flags = SLOT_BELT
 	w_class = ITEM_SIZE_NORMAL
-	can_dual = 1
+	can_dual = TRUE
 	projectile_type = /obj/item/projectile/beam
 	zoom_factor = 0
 	damage_multiplier = 1
@@ -99,6 +100,7 @@
 		WEAPON_CHARGE
 	)
 	twohanded = FALSE
+	spawn_blacklisted = TRUE//antag_item_targets
 
 /obj/item/weapon/gun/energy/lasercannon
 	name = "Prototype: laser cannon"
@@ -180,7 +182,7 @@
 		break
 
 /obj/item/weapon/gun/energy/psychic/proc/reg_break(mob/living/carbon/human/victim)
-	if(victim.get_species() != "Human")
+	if(victim.get_species() != SPECIES_HUMAN)
 		return
 
 	if(!contract)

@@ -8,9 +8,11 @@
 	opacity = FALSE
 	anchored = TRUE
 	icon = 'icons/obj/stairs.dmi'
+	bad_type = /obj/structure/multiz
 	var/istop = TRUE
 	var/obj/structure/multiz/target
 	var/obj/structure/multiz/targeted_by
+
 /obj/structure/multiz/New()
 	. = ..()
 	for(var/obj/structure/multiz/M in loc)
@@ -157,7 +159,7 @@
 		if(!A.CanPass(M))
 			to_chat(M, SPAN_NOTICE("\A [A] is blocking \the [src]."))
 			return
-		else if (A.density && istype(A, /mob))
+		else if (A.density && ismob(A))
 			tempMob = A
 			continue
 

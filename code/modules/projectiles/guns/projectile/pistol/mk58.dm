@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/projectile/mk58
 	name = "NT HG .35 Auto \"Mk58\""
-	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, that was produced by a NanoTrasen subsidiary. Uses standard .35 Auto mags."
+	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, that was produced by a NanoTrasen subsidiary. Uses standard .35 and high capacity magazines."
 	icon = 'icons/obj/guns/projectile/mk58.dmi'
 	icon_state = "mk58"
 	item_state = "pistol"
@@ -8,10 +8,10 @@
 	matter = list(MATERIAL_PLASTEEL = 12, MATERIAL_PLASTIC = 6)
 	price_tag = 1400
 	fire_sound = 'sound/weapons/guns/fire/pistol_fire.ogg'
-	can_dual = 1
+	can_dual = TRUE
 	caliber = CAL_PISTOL
 	load_method = MAGAZINE
-	mag_well = MAG_WELL_PISTOL
+	mag_well = MAG_WELL_PISTOL|MAG_WELL_H_PISTOL
 	magazine_type = /obj/item/ammo_magazine/pistol
 	damage_multiplier = 1.3
 	penetration_multiplier = 1.3

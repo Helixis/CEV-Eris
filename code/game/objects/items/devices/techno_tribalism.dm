@@ -59,10 +59,14 @@
 				oddity_stats[STAT_MEC] += 1
 				oddity_stats[STAT_VIG] += 3
 				oddity_stats[STAT_COG] += 1
+			else if(GLOB.all_faction_items[W] == GLOB.department_civilian)
+				oddity_stats[STAT_BIO] += 3
+				oddity_stats[STAT_VIG] += 2
+				oddity_stats[STAT_COG] += 2
 			else
 				crash_with("[W], incompatible department")
 
-		else if(istype(W, /obj/item/weapon/tool))
+		else if(istool(W))
 			var/useful = FALSE
 			if(W.tool_qualities)
 
@@ -132,7 +136,7 @@
 			else
 				oddity_stats[STAT_ROB] += 1
 
-		else if(istype(W, /obj/item/weapon/gun))
+		else if(isgun(W))
 			oddity_stats[STAT_ROB] += 2
 			oddity_stats[STAT_VIG] += 2
 
@@ -152,11 +156,11 @@
 /obj/item/device/techno_tribalism/attack_self()
 	if(world.time >= (last_produce + cooldown))
 		if(items_count >= max_count)
-			if(istype(src.loc, /mob/living/carbon/human))
+			if(ishuman(src.loc))
 				var/mob/living/carbon/human/user = src.loc
 				var/obj/item/weapon/oddity/techno/T = new /obj/item/weapon/oddity/techno(src)
 				T.oddity_stats = src.oddity_stats
-				T.AddComponent(/datum/component/inspiration, T.oddity_stats)
+				T.AddComponent(/datum/component/inspiration, T.oddity_stats, T.perk)
 				items_count = 0
 				oddity_stats = list(STAT_MEC = 0, STAT_COG = 0, STAT_BIO = 0, STAT_ROB = 0, STAT_TGH = 0, STAT_VIG = 0)
 				last_produce = world.time

@@ -30,7 +30,7 @@ var/global/list/stool_cache = list() //haha stool
 	update_icon()
 
 /obj/item/weapon/stool/padded/New(var/newloc, var/new_material)
-	..(newloc, "steel", "carpet")
+	..(newloc, MATERIAL_STEEL, MATERIAL_CARPET)
 
 /obj/item/weapon/stool/update_icon()
 	// Prep icon.
@@ -105,8 +105,8 @@ var/global/list/stool_cache = list() //haha stool
 		padding_material.place_sheet(get_turf(src))
 	qdel(src)
 
-/obj/item/weapon/stool/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/tool))
+/obj/item/weapon/stool/attackby(obj/item/weapon/W, mob/user)
+	if(istool(W))
 		if(W.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
 			dismantle()
 			qdel(src)
@@ -125,7 +125,7 @@ var/global/list/stool_cache = list() //haha stool
 			return
 		var/padding_type //This is awful but it needs to be like this until tiles are given a material var.
 		if(istype(W,/obj/item/stack/tile/carpet))
-			padding_type = "carpet"
+			padding_type = MATERIAL_CARPET
 		else if(istype(W,/obj/item/stack/material))
 			var/obj/item/stack/material/M = W
 			if(M.material && (M.material.flags & MATERIAL_PADDING))
@@ -150,7 +150,7 @@ var/global/list/stool_cache = list() //haha stool
 	icon_state = "stool_base"
 
 /obj/item/weapon/stool/custom/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/tool))
+	if(istool(W))
 		if(W.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
 			dismantle()
 			qdel(src)

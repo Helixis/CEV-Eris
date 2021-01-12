@@ -19,10 +19,12 @@
 
 	//spawn_values
 	var/price_tag = 0 // The item price in credits. atom/movable so we can also assign a price to animals and other things.
+	var/surplus_tag = FALSE //If true, attempting to export this will net you a greatly reduced amount of credits, but we don't want to affect the actual price tag for selling to others.
 	var/spawn_tags
 	var/rarity_value = 1 //min:1
 	var/spawn_frequency = 0 //min:0
 	var/accompanying_object	//path or text "obj/item/weapon,/obj/item/device"
+	var/prob_aditional_object = 100
 	var/spawn_blacklisted = FALSE
 	var/bad_type //path
 
@@ -387,6 +389,7 @@
 			// if we wasn't on map OR our Z coord was changed
 			if( !isturf(oldloc) || (get_z(loc) != get_z(oldloc)) )
 				update_plane()
+				onTransitZ(get_z(oldloc, get_z(loc)))
 
 		SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, oldloc, loc)
 
@@ -394,6 +397,20 @@
 /proc/step_glide(atom/movable/AM, newdir, glide_size_override)
 	AM.set_glide_size(glide_size_override)
 	return step(AM, newdir)
+
+//We're changing zlevel
+/atom/movable/proc/onTransitZ(old_z, new_z)//uncomment when something is receiving this signal
+	/*SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
+	for(var/atom/movable/AM in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
+		AM.onTransitZ(old_z,new_z)*/
+
+/mob/living/proc/update_z(new_z) // 1+ to register, null to unregister
+	if (registered_z != new_z)
+		if (registered_z)
+			SSmobs.mob_living_by_zlevel[registered_z] -= src
+		if (new_z)
+			SSmobs.mob_living_by_zlevel[new_z] += src
+		registered_z = new_z
 
 // if this returns true, interaction to turf will be redirected to src instead
 /atom/movable/proc/preventsTurfInteractions()

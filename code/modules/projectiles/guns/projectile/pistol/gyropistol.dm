@@ -5,7 +5,7 @@
 	icon_state = "gyropistol"
 	item_state = "pistol"
 	fire_sound = 'sound/weapons/guns/fire/hpistol_fire.ogg'
-	can_dual = 1
+	can_dual = TRUE
 	origin_tech = list(TECH_COMBAT = 3)
 	matter = list(MATERIAL_PLASTEEL = 12, MATERIAL_PLASTIC = 6)
 	price_tag = 2500
@@ -20,6 +20,8 @@
 	unload_sound 	= 'sound/weapons/guns/interact/hpistol_magout.ogg'
 	reload_sound 	= 'sound/weapons/guns/interact/hpistol_magin.ogg'
 	cocked_sound 	= 'sound/weapons/guns/interact/hpistol_cock.ogg'
+	rarity_value = 100
+	spawn_blacklisted = TRUE
 
 /obj/item/weapon/gun/projectile/gyropistol/update_icon()
 	..()
