@@ -204,3 +204,10 @@
 #define MARKING_TARGET_SKIN 0 // Draw a datum/sprite_accessory/marking to the mob's body, eg. tattoos
 #define MARKING_TARGET_HAIR 1 // Draw a datum/sprite_accessory/marking to the mob's hair, eg. ears & horns
 #define NECROZTIME 	(5 MINUTES)
+
+
+
+//Surgery operation defines
+#define CAN_OPERATE_ALL 1 //All possible surgery types are available
+#define CAN_OPERATE_STANDING -1 //Only limited surgery types are available (gouging out shrapnel, for instance)
+
