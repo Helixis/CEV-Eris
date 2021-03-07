@@ -93,6 +93,8 @@ h1.alert, h2.alert		{color: #000000;}
 .jive					{color: #666666}
 .german					{color: #001FFF}
 .kidan					{color: #C64C05}
+.neohongo               {color: #993399}
+.latin                  {color: #deb63d}
 
 .interface				{color: #330033;}
 
