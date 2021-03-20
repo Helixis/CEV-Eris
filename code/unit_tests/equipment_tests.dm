@@ -19,7 +19,7 @@ datum/unit_test/vision_glasses/start_test()
 			fail(test["msg"])
 			async = 0
 
-			return 0
+		
 
 		H = locate(test["mobref"])
 

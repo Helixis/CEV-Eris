@@ -258,8 +258,6 @@ var/list/holder_mob_icon_cache = list()
 			//If the scooping up failed something must have gone wrong
 			H.release_mob()
 
-		return success
-
 
 /mob/living/proc/get_holder_location()
 	set category = "Abilities"
@@ -283,14 +281,14 @@ var/list/holder_mob_icon_cache = list()
 
 /obj/item/weapon/holder/proc/sync(var/mob/living/M)
 	dir = 2
-	cut_overlays()
+	overlays.Cut()
 	icon = M.icon
 	icon_state = M.icon_state
 	item_state = M.item_state
 	color = M.color
 	name = M.name
 	desc = M.desc
-	associate_with_overlays(M.overlays)
+	overlays |= M.overlays
 	last_holder = loc
 	update_wear_icon()
 
