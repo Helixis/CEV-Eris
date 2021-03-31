@@ -3,7 +3,7 @@
 	dir = WEST
 	suitable_cell = /obj/item/weapon/cell/small
 	rarity_value = 5
-	var/tick_cost = 0.4
+	var/tick_cost = 0.3 //cambiado de 0.4 a 0.3
 
 	var/obj/effect/effect/light/light_spot
 
