@@ -255,7 +255,7 @@
 				"Seratonin, oxycodone, happy humans all!",
 				"Turn that frown upside down!",
 				"Happiness through chemistry!",
-				"Beauty through surgery!",
+				"Beauty through surgery!"
 				)
 	target_speak = list(
 				"I knew I'd be a good plastic surgeon!",
@@ -299,7 +299,7 @@
 				"WE BRING GREETINGS FROM A FRIENDLY AI.",
 				"DO NOT FEAR. WE SHALL NOT HARM YOU.",
 				"WE WISH TO LEARN MORE ABOUT YOU. PLEASE TRANSMIT DATA.",
-				"THIS PROBE IS NON-HOSTILE. DO NOT ATTACK.",
+				"THIS PROBE IS NON-HOSTILE. DO NOT ATTACK."
 				)
 	target_speak = list(
 						"MUST BREAK TARGET INTO COMPONENT COMPOUNDS.",
@@ -440,11 +440,13 @@
 	mob_size = MOB_MEDIUM
 	rarity_value = 75
 
-	speak = list("They grow up so fast.",
+	speak = list(
+				"They grow up so fast.",
 				"Come out, come out, wherever you are.",
 				"Humans are like children. We love our children.",
 				"The humans who surrender have such wonderful dreams.",
-				"Playtime is over children. Time to dream.")
+				"Playtime is over children. Time to dream."
+				)
 	target_speak = list(
 						"The mother-things need meat.",
 						"Surrender and we will put your brain in the pleasure simulator.",
@@ -547,7 +549,7 @@
 
 
 	//low hp? It's time to play dead
-	if(health < 120 && !fake_dead && world.time > fake_death_cooldown)
+	if(health < 160 && !fake_dead && world.time > fake_death_cooldown)
 		fake_death()
 
 	//shhhh, there an ambush
@@ -600,8 +602,7 @@
 			if(istype(H.l_ear, /obj/item/clothing/ears/earmuffs) && istype(H.r_ear, /obj/item/clothing/ears/earmuffs))
 				continue
 
-		victim.Weaken(5)
-		victim.ear_deaf = 40
+		victim.Weaken(4)
 		to_chat(victim, SPAN_WARNING("You hear loud and terrible scream!"))
 	special_ability_cooldown = world.time + ability_cooldown
 
@@ -620,11 +621,12 @@
 	var/mob/living/L = target_mob
 	if(L)
 		L.attack_generic(src, rand(15, 25)) //stealth attack
-		L.Weaken(5)
-		visible_emote("grabs [L]'s legs and force them down to the floor!")
+		L.Weaken(6)
+		visible_emote("suddenly heals its wounds and grabs [L] by the legs, forcing them down onto the floor!") //Nanomachines son!
 		var/msg = pick("MORE! I'M NOT DONE YET!", "MORE PAIN!", "THE DREAMS OVERTAKE ME!", "GOD, YES! HURT ME!")
 		say(msg)
 	destroy_surroundings = TRUE
+	heal_overall_damage(30, 0) //more than 10% of maxhealth
 	icon_state = "himan-damaged"
 	fake_dead = FALSE
 	stance = HOSTILE_STANCE_IDLE
@@ -667,14 +669,16 @@
 	speak = list(
 				"A shame this form isn't more fitting.",
 				"A girl can get so lonely with no-one to play with...",
-				"Beauty is within.")
+				"Beauty is within."
+				)
 	target_speak = list(
 				"What a lovely body. Lay it down intact.",
 				"Come here, lover.",
 				"First time? I can be gentle, unless you like it rough.",
 				"What use is that flesh if you don't enjoy it?",
 				"Mine is the caress of steel.",
-				"I offer you the ecstasy of union, and yet you tremble.")
+				"I offer you the ecstasy of union, and yet you tremble."
+				)
 	//speaking with pilot
 	var/list/common_answers = list(
 								"Of course, lover.",
