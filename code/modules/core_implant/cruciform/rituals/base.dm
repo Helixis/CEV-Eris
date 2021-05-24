@@ -86,15 +86,8 @@
 				was_triggired = TRUE
 				break
 	if (prob(80) && (locate(/obj/structure/wire_splicing) in view(7, H))) //Add more traps later
-		to_chat(H, SPAN_WARNING("Something wrong with this area. Tread carefully."))
+		to_chat(H, SPAN_WARNING("Something is wrong with this area. Tread carefully."))
 		was_triggired = TRUE
-	if (prob(20))
-		for(var/mob/living/carbon/human/target in range(14, H))
-			for(var/organ in target.organs)
-				if (organ in subtypesof(/obj/item/organ/internal/carrion))
-					to_chat(H, SPAN_DANGER("Something's ire is upon you! Twisted and evil mind touches you for a moment, leaving you in cold sweat."))
-					was_triggired = TRUE
-					break
 	if (!was_triggired)
 		to_chat(H, SPAN_NOTICE("There is nothing there. You feel safe."))
 
@@ -109,15 +102,20 @@
 
 /datum/ritual/cruciform/base/sense_cruciform/perform(mob/living/carbon/human/H, obj/item/weapon/implant/core_implant/C)
 	var/list/mob/living/carbon/human/humans = list()
+	var/cruciforms = 0
 	for(var/mob/living/carbon/human/T in view(7, get_turf(H)))
+		if(T == H)
+			continue
+		var/obj/item/weapon/implant/core_implant/cruciform/CI = T.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform)
+		if(CI)
+			to_chat(H, "<span class='rose'>[T] has a cruciform installed.</span>")
+			cruciforms++
 		humans.Add(T)
-	if(humans.len)
-		for(var/mob/living/carbon/human/T in humans)
-			var/obj/item/weapon/implant/core_implant/cruciform/CI = T.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform)
-			if(CI)
-				to_chat(H, "<span class='rose'>[T] has a cruciform installed.</span>")
-	else
-		fail("No target. Make sure your target is either in front of you or grabbed by you.", H, C)
+	if(!humans.len)
+		fail("There is no one around you.", H, C)
+		return FALSE
+	else if(!cruciforms)
+		fail("No one around you has a cruciform installed.", H, C)
 		return FALSE
 	set_personal_cooldown(H)
 	return TRUE
@@ -134,6 +132,7 @@
 	if(!T)
 		fail("No target.", H, C)
 		return FALSE
+	eotp.scanned -= T
 	T.hallucination(50,100)
 	var/sanity_gain = rand(0,10)
 	T.druggy = max(T.druggy, 10)

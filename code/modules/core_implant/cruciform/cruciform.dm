@@ -12,11 +12,9 @@ var/list/disciples = list()
 	access = list(access_nt_disciple)
 	power = 50
 	max_power = 50
-	power_regen = 2/(1 MINUTES)
+	power_regen = 20/(1 MINUTES)
 	price_tag = 500
 	var/obj/item/weapon/cruciform_upgrade/upgrade
-
-	var/channeling_boost = 0  // used for the power regen boost if the wearer has the channeling perk
 
 	var/righteous_life = 0
 	var/max_righteous_life = 100
@@ -24,9 +22,13 @@ var/list/disciples = list()
 /obj/item/weapon/implant/core_implant/cruciform/auto_restore_power()
 	if(power >= max_power)
 		return
+
 	var/true_power_regen = power_regen
-	true_power_regen += max(round(wearer.stats.getStat(STAT_COG) / 4), 0) * (0.1 / 1 MINUTES)
-	true_power_regen +=  power_regen * 1.5 * righteous_life / max_righteous_life
+	true_power_regen += max(round(wearer.stats.getStat(STAT_COG) / 4), 0) * (1 / (1 MINUTES))
+	true_power_regen += power_regen * 1.5 * righteous_life / max_righteous_life
+	if(wearer && wearer.stats?.getPerk(/datum/perk/channeling))
+		true_power_regen += power_regen * disciples.len / 2.5  // Proportional to the number of cruciformed people on board
+
 	restore_power(true_power_regen)
 
 /obj/item/weapon/implant/core_implant/cruciform/proc/register_wearer()
@@ -44,7 +46,7 @@ var/list/disciples = list()
 		righteous_life = max(righteous_life - 0.5, 0)
 
 /obj/item/weapon/implant/core_implant/cruciform/proc/on_ritual()
-	righteous_life = min(righteous_life + 20, max_righteous_life)
+	righteous_life = min(righteous_life + 25, max_righteous_life)
 
 
 /obj/item/weapon/implant/core_implant/cruciform/install(mob/living/target, organ, mob/user)
@@ -98,7 +100,7 @@ var/list/disciples = list()
 		eotp.addObservation(50)
 	return TRUE
 
-/obj/item/weapon/implant/core_implant/cruciform/examine(mob/user) 
+/obj/item/weapon/implant/core_implant/cruciform/examine(mob/user)
 	..()
 	var/datum/core_module/cruciform/cloning/data = get_module(CRUCIFORM_CLONING)
 	if(data?.mind) // if there is cloning data and it has a mind
@@ -129,10 +131,6 @@ var/list/disciples = list()
 	if(wearer)
 		if(wearer.stat == DEAD)
 			deactivate()
-		else if(wearer.stats?.getPerk(/datum/perk/channeling) && round(world.time) % 5 == 0)
-			power_regen -= channeling_boost  // Removing the previous channeling boost since the number of disciples may have changed
-			channeling_boost = power_regen * disciples.len / 2.5  // Proportional to the number of cruciformed people on board
-			power_regen += channeling_boost  // Applying the new power regeneration boost
 
 /obj/item/weapon/implant/core_implant/cruciform/proc/transfer_soul()
 	if(!wearer || !activated)
@@ -198,7 +196,7 @@ var/list/disciples = list()
 /obj/item/weapon/implant/core_implant/cruciform/proc/make_common()
 	remove_modules(CRUCIFORM_PRIEST)
 	remove_modules(CRUCIFORM_INQUISITOR)
-	remove_modules(/datum/core_module/cruciform/red_light)
+	remove_modules(CRUCIFORM_REDLIGHT)
 
 /obj/item/weapon/implant/core_implant/cruciform/proc/make_priest()
 	add_module(new CRUCIFORM_PRIEST)
@@ -208,4 +206,4 @@ var/list/disciples = list()
 	add_module(new CRUCIFORM_PRIEST)
 	add_module(new CRUCIFORM_INQUISITOR)
 	add_module(new /datum/core_module/cruciform/uplink())
-	remove_modules(/datum/core_module/cruciform/red_light)
+	remove_modules(CRUCIFORM_REDLIGHT)

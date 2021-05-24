@@ -20,22 +20,52 @@
 
 /obj/item/part/armor
 	name = "armor part"
-	desc = "Spare part for clothing."
+	desc = "Spare part of armor."
 	icon_state = "armor_part"
 	spawn_tags = SPAWN_TAG_PART_ARMOR
 	matter = list(MATERIAL_PLASTIC = 5, MATERIAL_WOOD = 5, MATERIAL_CARDBOARD = 5, MATERIAL_STEEL = 5)
 
+/obj/item/part/armor/artwork
+	desc = "This is an artistically-made armor part."
+	spawn_frequency = 0
+
+/obj/item/part/armor/artwork/Initialize()
+	name = get_weapon_name(capitalize = TRUE)
+	AddComponent(/datum/component/atom_sanity, 0.2 + pick(0,0.1,0.2), "")
+	price_tag += rand(0, 500)
+	return ..()
+
+/obj/item/part/armor/artwork/get_item_cost(export)
+	. = ..()
+	GET_COMPONENT(comp_sanity, /datum/component/atom_sanity)
+	. += comp_sanity.affect * 100
+
 /obj/item/part/gun
 	name = "gun part"
-	desc = "Spare part of a gun."
+	desc = "Spare part of gun."
 	icon_state = "gun_part_1"
 	spawn_tags = SPAWN_TAG_GUN_PART
 	w_class = ITEM_SIZE_SMALL
 	matter = list(MATERIAL_PLASTEEL = 1.2)
 
-/obj/item/part/gun/New()
+/obj/item/part/gun/Initialize()
 	. = ..()
 	icon_state = "gun_part_[rand(1,6)]"
+
+/obj/item/part/gun/artwork
+	desc = "This is an artistically-made gun part."
+	spawn_frequency = 0
+
+/obj/item/part/gun/artwork/Initialize()
+	name = get_weapon_name(capitalize = TRUE)
+	AddComponent(/datum/component/atom_sanity, 0.2 + pick(0,0.1,0.2), "")
+	price_tag += rand(0, 500)
+	return ..()
+
+/obj/item/part/gun/artwork/get_item_cost(export)
+	. = ..()
+	GET_COMPONENT(comp_sanity, /datum/component/atom_sanity)
+	. += comp_sanity.affect * 100
 
 /obj/item/craft_frame
 	name = "item assembly"
@@ -66,7 +96,10 @@
 /obj/item/craft_frame/examine(user, distance)
 	. = ..()
 	if(.)
-		to_chat(user, SPAN_NOTICE("Requires [req_parts] gun parts to be complete."))
+		if(req_parts > 0)
+			to_chat(user, SPAN_NOTICE("Requires [req_parts] gun parts to be complete."))
+		else
+			to_chat(user, SPAN_NOTICE("[src] is complete."))
 
 /obj/item/craft_frame/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, suitable_part))
@@ -79,7 +112,7 @@
 				complete()
 				to_chat(user, SPAN_NOTICE("You have completed [src]."))
 			return
-	. = ..()
+	return ..()
 
 /obj/item/craft_frame/proc/complete()
 	generate_guns()
@@ -89,13 +122,8 @@
 	for(var/i in 1 to total_items)
 		var/list/canidates = SSspawn_data.valid_candidates(tags_to_spawn, null, FALSE, i*100, null, TRUE, null, paths, null)
 		paths += list(SSspawn_data.pick_spawn(canidates))
-	paths = SSspawn_data.sort_paths_by_price(paths)
 	for(var/path in paths)
 		items += new path()
-
-/obj/item/craft_frame/Destroy()
-	drop_parts()
-	. = ..()
 
 /obj/item/craft_frame/proc/drop_parts()
 	for(var/obj/item/part/P in contents)

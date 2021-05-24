@@ -104,6 +104,7 @@
 		/datum/design/autolathe/ammo/magazine_pistol,
 		/datum/design/autolathe/ammo/magazine_pistol/practice = 0,
 		/datum/design/autolathe/ammo/magazine_pistol/rubber,
+		/datum/design/autolathe/ammo/sl_pistol,
 		/datum/design/autolathe/ammo/sl_pistol/practice = 0,
 		/datum/design/autolathe/ammo/sl_pistol/rubber,
 		)
@@ -320,6 +321,14 @@
 		/datum/design/autolathe/ammo/smg/rubber,
 	)
 
+/obj/item/weapon/computer_hardware/hard_drive/portable/design/guns/fs_slaught_o_matic
+	disk_name = "Frozen Star - .35 Slaught-o-Matic HG"
+	icon_state = "frozenstar"
+	rarity_value = 7
+	license = 12
+	designs = list(
+		/datum/design/autolathe/gun/slaught_o_matic = 1 // "FS HG .35 \"Slaught-o-Matic\""
+	)
 
 /obj/item/weapon/computer_hardware/hard_drive/portable/design/guns/fs_bulldog
 	disk_name = "Frozen Star - .20 Bulldog Carabine"
@@ -362,12 +371,28 @@
 
 
 /obj/item/weapon/computer_hardware/hard_drive/portable/design/guns/fs_kalashnikov
-	disk_name = "Frozen Star - .30 Vipr Rifle"
+	disk_name = "Frozen Star - .30 Hunting Rifle Pack"
 	icon_state = "frozenstar"
 	spawn_tags = SPAWN_TAG_DESIGN_ADVANCED
 	license = 12
 	designs = list(
-		/datum/design/autolathe/gun/ak47_fs = 3, // "FS AR .30 \"Vipr\""
+
+		/datum/design/autolathe/gun/ak47_fs_vipr = 3, // "FS AR .30 \"Vipr\""
+		/datum/design/autolathe/gun/ak47_fs_wasp = 3, // "FS AR .30 \"Wasp\""
+		/datum/design/autolathe/gun/ak47_fs_brush = 3, // "FS AR .30 \"Brushmaster\""
+		/datum/design/autolathe/ammo/lrifle,
+		/datum/design/autolathe/ammo/lrifle/practice = 0,
+		/datum/design/autolathe/ammo/lrifle/rubber,
+	)
+
+/obj/item/weapon/computer_hardware/hard_drive/portable/design/guns/fs_kalashnikov_ih
+	disk_name = "Frozen Star - .30 PD Rifle Pack"
+	icon_state = "frozenstar"
+	spawn_tags = SPAWN_TAG_DESIGN_ADVANCED
+	rarity_value = 30
+	license = 12
+	designs = list(
+		/datum/design/autolathe/gun/ak47_fs_ih = 3, // "FS AR .30 \"Venger\""
 		/datum/design/autolathe/ammo/lrifle,
 		/datum/design/autolathe/ammo/lrifle/practice = 0,
 		/datum/design/autolathe/ammo/lrifle/rubber,
